@@ -1,0 +1,20 @@
+.DS_Store
+.pub/
+
+# Flutter / Dart
+.dart_tool/
+.packages
+openmhealth_schemas.iml
+pubspec.lock
+build/
+
+
+# IntelliJ .idea files
+.idea/
+.idea/*
+.idea/**/openmhealth_schemas.iml
+.idea/**/modules.xml
+.idea/libraries/Dart_SDK.xml
+.idea/libraries/Flutter_Plugins.xml
+
+

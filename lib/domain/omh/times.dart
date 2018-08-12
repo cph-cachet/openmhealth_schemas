@@ -59,7 +59,7 @@ class DurationUnitValue extends TypedUnitValue<DurationUnit> {
 
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_duration-unit-value">duration-unit-value</a>
-class DurationUnit implements Unit {
+class DurationUnit extends Unit {
   static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "duration-unit-value", new SchemaVersion(1, 0));
 
   static const String PICOSECOND = 'ps';
@@ -74,19 +74,11 @@ class DurationUnit implements Unit {
   static const String MONTH = 'mo';
   static const String YEAR = 'yr';
 
-  String schemaValue;
-  //private static final Map<String, DurationUnit> constantsBySchemaValue = new HashMap<>();
-
-  DurationUnit(this.schemaValue);
+  DurationUnit(schemaValue) : super(schemaValue);
 
   @override
   SchemaId getSchemaId() {
     return SCHEMA_ID;
-  }
-
-  @override
-  String getSchemaValue() {
-    return schemaValue;
   }
 }
 
@@ -94,7 +86,7 @@ class DurationUnit implements Unit {
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_part-of-day">part-of-day</a>
-class PartOfDay implements SchemaEnumValue, SchemaSupport {
+class PartOfDay extends SchemaEnumValue implements SchemaSupport {
   static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "part-of-day", new SchemaVersion(1, 0));
 
   static const String MORNING = 'MORNING';
@@ -102,18 +94,10 @@ class PartOfDay implements SchemaEnumValue, SchemaSupport {
   static const String EVENING = 'EVENING';
   static const String NIGHT = 'NIGHT';
 
-  String schemaValue;
-//   static final Map<String, PartOfDay> constantsBySchemaValue = new HashMap<>();
-
-  PartOfDay(this.schemaValue);
+  PartOfDay(schemaValue) : super(schemaValue);
 
   @override
   SchemaId getSchemaId() {
     return SCHEMA_ID;
-  }
-
-  @override
-  String getSchemaValue() {
-    return schemaValue;
   }
 }

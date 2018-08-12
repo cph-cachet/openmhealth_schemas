@@ -1,6 +1,6 @@
 name: openmhealth_schemas
 description: A Flutter implementation of the Open mHealth (omh) schemas.
-version: 0.0.1
+version: 0.0.2
 author: Jakob E. Bardram <jakba@dtu.dk>
 homepage: https://github.com/cph-cachet/openmhealth_schemas
 

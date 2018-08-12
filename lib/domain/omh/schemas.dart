@@ -15,7 +15,7 @@ abstract class SchemaSupport {
  * See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_schema-id">schema-id</a>
  */
 class SchemaId implements Comparable<SchemaId>, SchemaSupport {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "schema-id", new SchemaVersion(1, 1));
+  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "schema-id", new SchemaVersion(1, 0));
 
   String namespace;
   String name;
@@ -39,6 +39,11 @@ class SchemaId implements Comparable<SchemaId>, SchemaSupport {
   @override
   SchemaId getSchemaId() {
     return SCHEMA_ID;
+  }
+
+  @override
+  String toString() {
+    return '$namespace.$name.v$version';
   }
 }
 
@@ -98,7 +103,7 @@ class SchemaVersion implements Comparable<SchemaVersion> {
 
   @override
   String toString() {
-    String str = (major != null) ? major : '';
+    String str = (major != null) ? '$major' : '';
     str += (minor != null) ? '.$minor' : '';
     str += (qualifier != null) ? '.$qualifier' : '';
 

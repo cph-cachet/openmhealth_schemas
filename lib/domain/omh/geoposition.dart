@@ -17,13 +17,9 @@ class Geoposition extends Measure {
   List<TypedUnitValue<SignalToNoiseRatioUnit>> satelliteSignalStrengths;
   PositioningSystem positioningSystem;
 
-  Geoposition(
-      {this.latitude,
-      this.longitude,
-      this.elevation,
-      this.numberOfSatellitesInView,
-      this.numberOfSatellitesInFix,
-      this.positioningSystem});
+  /// Creates a [Geoposition]. The [latitude] and [longitude] are required according to the OMH definition.
+  Geoposition(this.latitude, this.longitude,
+      {this.elevation, this.numberOfSatellitesInView, this.numberOfSatellitesInFix, this.positioningSystem});
 
   @override
   SchemaId getSchemaId() {
@@ -39,7 +35,7 @@ class PlaneAngleUnitValue extends TypedUnitValue<PlaneAngleUnit> {
   static SchemaId SCHEMA_ID =
       new SchemaId(SchemaSupport.OMH_NAMESPACE, "plane-angle-unit-value", new SchemaVersion(1, 0));
 
-  PlaneAngleUnitValue(unit, value) : super(unit, value);
+  PlaneAngleUnitValue(PlaneAngleUnit unit, value) : super(unit, value);
 
   @override
   SchemaId getSchemaId() {
@@ -51,24 +47,17 @@ class PlaneAngleUnitValue extends TypedUnitValue<PlaneAngleUnit> {
 
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_plane-angle-unit-value">plane-angle-unit-value</a>
-class PlaneAngleUnit implements Unit {
+class PlaneAngleUnit extends Unit {
   static SchemaId SCHEMA_ID =
       new SchemaId(SchemaSupport.OMH_NAMESPACE, "plane-angle-unit-value", new SchemaVersion(1, 0));
 
   static const String DEGREE_OF_ARC = 'deg';
 
-  String schemaValue;
-
-  PlaneAngleUnit(this.schemaValue);
+  PlaneAngleUnit(schemaValue) : super(schemaValue);
 
   @override
   SchemaId getSchemaId() {
     return SCHEMA_ID;
-  }
-
-  @override
-  String getSchemaValue() {
-    return schemaValue;
   }
 }
 
@@ -76,9 +65,7 @@ class PlaneAngleUnit implements Unit {
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_geoposition">geoposition</a>
-class PositioningSystem implements SchemaEnumValue {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "geoposition", new SchemaVersion(1, 0));
-
+class PositioningSystem extends SchemaEnumValue {
   static const String GPS = "GPS";
   static const String GLONASS = "GLONASS";
   static const String GALILEO = "Galileo";
@@ -87,42 +74,23 @@ class PositioningSystem implements SchemaEnumValue {
   static const String IRNSS = "IRNSS";
   static const String QZSS = "QZSS";
 
-  String schemaValue;
-
-  PositioningSystem(this.schemaValue);
-
-  @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
-
-  @override
-  String getSchemaValue() {
-    return schemaValue;
-  }
+  PositioningSystem(schemaValue) : super(schemaValue);
 }
 
 /// A unit of a signal-to-noise ratio.
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_geoposition">geoposition</a>
-class SignalToNoiseRatioUnit implements Unit {
+class SignalToNoiseRatioUnit extends Unit {
   static SchemaId SCHEMA_ID =
       new SchemaId(SchemaSupport.OMH_NAMESPACE, "plane-angle-unit-value", new SchemaVersion(1, 0));
 
   static const String DECIBEL = 'dB';
 
-  String schemaValue;
-
-  SignalToNoiseRatioUnit(this.schemaValue);
+  SignalToNoiseRatioUnit(schemaValue) : super(schemaValue);
 
   @override
   SchemaId getSchemaId() {
     return SCHEMA_ID;
-  }
-
-  @override
-  String getSchemaValue() {
-    return schemaValue;
   }
 }

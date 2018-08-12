@@ -1,3 +1,11 @@
+## 0.0.2
+
+- Implementation of OMH schemas: 
+   - Activity, including `PhysicalActivity`, `KcalUnitValue`, `KcalUnit`, `StepCount`, `CalloriesBurden`, etc.
+   - updates and refactor of other base schemas
+   - adding more tests
+   
+   
 ## 0.0.1
 
 - Initial commit of OMH domain model ...

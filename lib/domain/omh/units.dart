@@ -2,14 +2,16 @@ import 'package:openmhealth_schemas/openmhealth_schemas.dart';
 
 /// An abstract class represent schema enumerations.
 abstract class SchemaEnumValue {
-  /**
-   * @return the schema enumeration value
-   */
-  String getSchemaValue();
+  ///The schema enumeration value
+  String schemaValue;
+
+  SchemaEnumValue(this.schemaValue);
 }
 
 /// A marker interface for units of measure.
-abstract class Unit extends SchemaEnumValue implements SchemaSupport {}
+abstract class Unit extends SchemaEnumValue implements SchemaSupport {
+  Unit(String schemaValue) : super(schemaValue);
+}
 
 /// A base class for unit value tuples.
 ///
@@ -27,13 +29,18 @@ class UnitValue extends Object with AdditionalPropertySupport implements SchemaS
   SchemaId getSchemaId() {
     return SCHEMA_ID;
   }
+
+  @override
+  String toString() {
+    return getSchemaId().toString() + ' : {unit: $unit , value: $value}';
+  }
 }
 
 ///A unit value implementation that uses a Java enum to represent units.
 class TypedUnitValue<T extends Unit> extends UnitValue {
   T typedUnit;
 
-  TypedUnitValue(unit, value) : super(unit, value);
+  TypedUnitValue(T unit, value) : super(unit.schemaValue, value);
 }
 
 /// OMH version 1.0
@@ -41,7 +48,7 @@ class TypedUnitValue<T extends Unit> extends UnitValue {
 class LengthUnitValue extends TypedUnitValue<LengthUnit> implements SchemaSupport {
   static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "length-unit-value", new SchemaVersion(1, 0));
 
-  LengthUnitValue(unit, value) : super(unit, value);
+  LengthUnitValue(LengthUnit unit, value) : super(unit, value);
 
   @override
   SchemaId getSchemaId() {
@@ -53,7 +60,7 @@ class LengthUnitValue extends TypedUnitValue<LengthUnit> implements SchemaSuppor
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_length-unit-value">length-unit-value</a>
-class LengthUnit implements Unit {
+class LengthUnit extends Unit {
   static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "length-unit-value", new SchemaVersion(1, 0));
 
   static const String FEMTOMETER = "fm";
@@ -69,17 +76,10 @@ class LengthUnit implements Unit {
   static const String YARD = "yd";
   static const String MILE = "mi";
 
-  String schemaValue;
-
-  LengthUnit(this.schemaValue);
+  LengthUnit(String schemaValue) : super(schemaValue);
 
   @override
   SchemaId getSchemaId() {
     return SCHEMA_ID;
-  }
-
-  @override
-  String getSchemaValue() {
-    return schemaValue;
   }
 }

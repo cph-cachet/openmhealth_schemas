@@ -48,8 +48,16 @@ void main() {
     expect(steps.effectiveTimeFrame.timeInterval.endDateTime, end);
   });
 
-  test('', () {
+  test('OMH Blood Pressure Schema Test', () {
     //Testing
+    BloodPressure bp = new BloodPressure(
+        new SystolicBloodPressure(new BloodPressureUnit(BloodPressureUnit.MM_OF_MERCURY), 160.0),
+        new DiastolicBloodPressure(new BloodPressureUnit(BloodPressureUnit.MM_OF_MERCURY), 80.0),
+        positionDuringMeasurement: new PositionDuringMeasurement(PositionDuringMeasurement.SITTING));
+
+    expect(bp.diastolicBloodPressure.value, 80);
+    expect(bp.systolicBloodPressure.value, 160);
+    expect(bp.positionDuringMeasurement.schemaValue, "sitting");
   });
 
   test('', () {

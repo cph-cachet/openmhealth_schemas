@@ -56,7 +56,7 @@ class DurationUnitValue extends TypedUnitValue<DurationUnit> {
 }
 
 /// A unit of duration.
-
+///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_duration-unit-value">duration-unit-value</a>
 class DurationUnit extends Unit {

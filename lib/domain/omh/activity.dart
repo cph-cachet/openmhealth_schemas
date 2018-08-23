@@ -97,6 +97,7 @@ class StepCount extends Measure {
       new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "step-count", new SchemaVersion(2, 0));
 
   int stepCount;
+  String descriptiveStatisticDenominator;
 
   /// Creates a [StepCount]. The [stepCount] is required according to the OMH definition.
   StepCount(this.stepCount);
@@ -122,10 +123,10 @@ class CaloriesBurned extends Measure {
 
   KcalUnitValue kcalBurned;
   String activityName;
-  DescriptiveStatisticDenominator descriptiveStatisticDenominator;
+  String descriptiveStatisticDenominator;
 
   /// Creates a [CaloriesBurned]. The [kcalBurned] is required according to the OMH definition.
-  CaloriesBurned(this.kcalBurned, {this.activityName});
+  CaloriesBurned(this.kcalBurned, {this.activityName, this.descriptiveStatisticDenominator});
 
   factory CaloriesBurned.fromJson(Map<String, dynamic> json) => _$CaloriesBurnedFromJson(json);
   Map<String, dynamic> toJson() => _$CaloriesBurnedToJson(this);

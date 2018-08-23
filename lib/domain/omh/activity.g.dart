@@ -20,10 +20,7 @@ PhysicalActivity _$PhysicalActivityFromJson(Map<String, dynamic> json) {
         ? null
         : TimeFrame.fromJson(
             json['effective_time_frame'] as Map<String, dynamic>)
-    ..descriptiveStatistic = json['descriptive_statistic'] == null
-        ? null
-        : DescriptiveStatistic.fromJson(
-            json['descriptive_statistic'] as Map<String, dynamic>)
+    ..descriptiveStatistic = json['descriptive_statistic'] as String
     ..userNotes = json['user_notes'] as String;
 }
 
@@ -89,11 +86,10 @@ StepCount _$StepCountFromJson(Map<String, dynamic> json) {
         ? null
         : TimeFrame.fromJson(
             json['effective_time_frame'] as Map<String, dynamic>)
-    ..descriptiveStatistic = json['descriptive_statistic'] == null
-        ? null
-        : DescriptiveStatistic.fromJson(
-            json['descriptive_statistic'] as Map<String, dynamic>)
-    ..userNotes = json['user_notes'] as String;
+    ..descriptiveStatistic = json['descriptive_statistic'] as String
+    ..userNotes = json['user_notes'] as String
+    ..descriptiveStatisticDenominator =
+        json['descriptive_statistic_denominator'] as String;
 }
 
 Map<String, dynamic> _$StepCountToJson(StepCount instance) {
@@ -109,6 +105,8 @@ Map<String, dynamic> _$StepCountToJson(StepCount instance) {
   writeNotNull('descriptive_statistic', instance.descriptiveStatistic);
   writeNotNull('user_notes', instance.userNotes);
   writeNotNull('step_count', instance.stepCount);
+  writeNotNull('descriptive_statistic_denominator',
+      instance.descriptiveStatisticDenominator);
   return val;
 }
 
@@ -117,22 +115,15 @@ CaloriesBurned _$CaloriesBurnedFromJson(Map<String, dynamic> json) {
       json['kcal_burned'] == null
           ? null
           : KcalUnitValue.fromJson(json['kcal_burned'] as Map<String, dynamic>),
-      activityName: json['activity_name'] as String)
+      activityName: json['activity_name'] as String,
+      descriptiveStatisticDenominator:
+          json['descriptive_statistic_denominator'] as String)
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
             json['effective_time_frame'] as Map<String, dynamic>)
-    ..descriptiveStatistic = json['descriptive_statistic'] == null
-        ? null
-        : DescriptiveStatistic.fromJson(
-            json['descriptive_statistic'] as Map<String, dynamic>)
-    ..userNotes = json['user_notes'] as String
-    ..descriptiveStatisticDenominator =
-        json['descriptive_statistic_denominator'] == null
-            ? null
-            : DescriptiveStatisticDenominator.fromJson(
-                json['descriptive_statistic_denominator']
-                    as Map<String, dynamic>);
+    ..descriptiveStatistic = json['descriptive_statistic'] as String
+    ..userNotes = json['user_notes'] as String;
 }
 
 Map<String, dynamic> _$CaloriesBurnedToJson(CaloriesBurned instance) {
@@ -164,10 +155,7 @@ MinutesModerateActivity _$MinutesModerateActivityFromJson(
         ? null
         : TimeFrame.fromJson(
             json['effective_time_frame'] as Map<String, dynamic>)
-    ..descriptiveStatistic = json['descriptive_statistic'] == null
-        ? null
-        : DescriptiveStatistic.fromJson(
-            json['descriptive_statistic'] as Map<String, dynamic>)
+    ..descriptiveStatistic = json['descriptive_statistic'] as String
     ..userNotes = json['user_notes'] as String;
 }
 

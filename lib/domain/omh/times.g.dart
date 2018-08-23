@@ -45,9 +45,7 @@ TimeInterval _$TimeIntervalFromJson(Map<String, dynamic> json) {
               json['duration'] as Map<String, dynamic>),
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
-      partOfDay: json['part_of_day'] == null
-          ? null
-          : PartOfDay.fromJson(json['part_of_day'] as Map<String, dynamic>));
+      partOfDay: json['part_of_day'] as String);
 }
 
 Map<String, dynamic> _$TimeIntervalToJson(TimeInterval instance) {
@@ -83,39 +81,5 @@ Map<String, dynamic> _$DurationUnitValueToJson(DurationUnitValue instance) {
 
   writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
-  return val;
-}
-
-DurationUnit _$DurationUnitFromJson(Map<String, dynamic> json) {
-  return DurationUnit(json['schema_value']);
-}
-
-Map<String, dynamic> _$DurationUnitToJson(DurationUnit instance) {
-  var val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('schema_value', instance.schemaValue);
-  return val;
-}
-
-PartOfDay _$PartOfDayFromJson(Map<String, dynamic> json) {
-  return PartOfDay(json['schema_value']);
-}
-
-Map<String, dynamic> _$PartOfDayToJson(PartOfDay instance) {
-  var val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('schema_value', instance.schemaValue);
   return val;
 }

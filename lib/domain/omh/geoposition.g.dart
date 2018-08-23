@@ -26,10 +26,7 @@ Geoposition _$GeopositionFromJson(Map<String, dynamic> json) {
         ? null
         : TimeFrame.fromJson(
             json['effective_time_frame'] as Map<String, dynamic>)
-    ..descriptiveStatistic = json['descriptive_statistic'] == null
-        ? null
-        : DescriptiveStatistic.fromJson(
-            json['descriptive_statistic'] as Map<String, dynamic>)
+    ..descriptiveStatistic = json['descriptive_statistic'] as String
     ..userNotes = json['user_notes'] as String;
 }
 
@@ -70,41 +67,5 @@ Map<String, dynamic> _$PlaneAngleUnitValueToJson(PlaneAngleUnitValue instance) {
 
   writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
-  return val;
-}
-
-PlaneAngleUnit _$PlaneAngleUnitFromJson(Map<String, dynamic> json) {
-  return PlaneAngleUnit(json['schema_value']);
-}
-
-Map<String, dynamic> _$PlaneAngleUnitToJson(PlaneAngleUnit instance) {
-  var val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('schema_value', instance.schemaValue);
-  return val;
-}
-
-SignalToNoiseRatioUnit _$SignalToNoiseRatioUnitFromJson(
-    Map<String, dynamic> json) {
-  return SignalToNoiseRatioUnit(json['schema_value']);
-}
-
-Map<String, dynamic> _$SignalToNoiseRatioUnitToJson(
-    SignalToNoiseRatioUnit instance) {
-  var val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('schema_value', instance.schemaValue);
   return val;
 }

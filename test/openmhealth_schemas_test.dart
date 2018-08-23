@@ -34,7 +34,8 @@ void main() {
   test('OMH Step Count Schema Test', () {
     // Creating the omh 'with average' example;
     StepCount steps = new StepCount(12000);
-    steps.descriptiveStatistic = new DescriptiveStatistic(DescriptiveStatistic.AVERAGE);
+    steps.descriptiveStatistic = DescriptiveStatistic.AVERAGE;
+    steps.descriptiveStatisticDenominator = DescriptiveStatisticDenominator.DAY;
     DateTime now = new DateTime.now();
     DateTime start = new DateTime(2016, 5, 5);
     DateTime end = new DateTime(2016, 6, 5);
@@ -45,6 +46,24 @@ void main() {
     expect(steps.effectiveTimeFrame.dateTime, null);
     expect(steps.effectiveTimeFrame.timeInterval.startDateTime, start);
     expect(steps.effectiveTimeFrame.timeInterval.endDateTime, end);
+  });
+
+  test('OMH Acceleration Schema Test', () {
+    // Creating the omh 'with average' example;
+    Acceleration acc = new Acceleration(
+        new AccelerationUnitValue(AccelerationUnit.M_S2, 9.82), new AccelerationUnitValue(AccelerationUnit.M_S2, -9.82),
+        acceleration_z: new AccelerationUnitValue(AccelerationUnit.M_S2, 0.0001),
+        sensor_body_location: BodyLocation.RIGHT_HIP);
+
+    DateTime start = new DateTime(2016, 5, 5);
+    DateTime end = new DateTime(2016, 6, 5);
+    TimeInterval time = new TimeInterval(startDateTime: start, endDateTime: end);
+    acc.effectiveTimeFrame = new TimeFrame(timeInterval: time);
+
+    expect(acc.sensor_body_location, "right hip");
+    expect(acc.effectiveTimeFrame.dateTime, null);
+    expect(acc.effectiveTimeFrame.timeInterval.startDateTime, start);
+    expect(acc.effectiveTimeFrame.timeInterval.endDateTime, end);
   });
 
   test('OMH Blood Pressure Schema Test', () {
@@ -78,7 +97,18 @@ void main() {
         reportedActivityIntensity: SelfReportedIntensity.LIGHT,
         distance: new LengthUnitValue((LengthUnit.METER), 12.0));
 
-    print("PhysicalActivity:\n" + _encode(activity));
+    print("\nPhysicalActivity:\n" + _encode(activity));
+
+    StepCount steps = new StepCount(12000);
+    steps.descriptiveStatistic = DescriptiveStatistic.AVERAGE;
+    steps.descriptiveStatisticDenominator = DescriptiveStatisticDenominator.DAY;
+    DateTime now = new DateTime.now();
+    DateTime start = new DateTime(2016, 5, 5);
+    DateTime end = new DateTime(2016, 6, 5);
+    TimeInterval time = new TimeInterval(startDateTime: start, endDateTime: end);
+    steps.effectiveTimeFrame = new TimeFrame(timeInterval: time);
+
+    print("\nStepCount:\n" + _encode(steps));
 
     CaloriesBurned cal = new CaloriesBurned(new KcalUnitValue(KcalUnit.KILOCALORIE, 23.2));
 

@@ -1,6 +1,7 @@
 ## 0.0.3
 
 - Implementation of `BloodPressure` and associated schemas.
+- Implementation of time-related schemas, such as `TemporalRelationshipToMeal` etc.
 - Adding support for JSON de/serialization of the OMH schemas implemented so far.
 - Extensive unit test for the de/serialization, including loading test data from the OMH website.
 

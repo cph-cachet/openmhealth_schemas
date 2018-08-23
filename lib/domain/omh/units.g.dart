@@ -41,20 +41,3 @@ Map<String, dynamic> _$LengthUnitValueToJson(LengthUnitValue instance) {
   writeNotNull('value', instance.value);
   return val;
 }
-
-LengthUnit _$LengthUnitFromJson(Map<String, dynamic> json) {
-  return LengthUnit(json['schema_value'] as String);
-}
-
-Map<String, dynamic> _$LengthUnitToJson(LengthUnit instance) {
-  var val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('schema_value', instance.schemaValue);
-  return val;
-}

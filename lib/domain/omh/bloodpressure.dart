@@ -71,46 +71,18 @@ class DiastolicBloodPressure extends UnitValue {
 
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure">blood-pressure</a>
-@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class BloodPressureUnit extends Unit {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "blood-pressure-unit-value", new SchemaVersion(1, 0));
-
   static const String MM_OF_MERCURY = 'mmHg';
 
   BloodPressureUnit(schemaValue) : super(schemaValue);
-
-  factory BloodPressureUnit.fromJson(Map<String, dynamic> json) => _$BloodPressureUnitFromJson(json);
-
-  Map<String, dynamic> toJson() => _$BloodPressureUnitToJson(this);
-
-  @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
 }
 
 /// The position of a subject during a clinical measurement.
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_position-during-measurement">position-during-measurement</a>
-@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
-class PositionDuringMeasurement extends SchemaEnumValue implements SchemaSupport {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "position-during-measurement", new SchemaVersion(1, 0));
-
+class PositionDuringMeasurement {
   static const String SITTING = 'sitting';
   static const String LYING_DOWN = 'lying down';
   static const String STANDING = 'standing';
-
-  PositionDuringMeasurement(schemaValue) : super(schemaValue);
-
-  factory PositionDuringMeasurement.fromJson(Map<String, dynamic> json) => _$PositionDuringMeasurementFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PositionDuringMeasurementToJson(this);
-
-  @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
 }

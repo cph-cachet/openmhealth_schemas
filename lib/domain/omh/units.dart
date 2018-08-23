@@ -5,7 +5,7 @@ part 'units.g.dart';
 
 /// A marker interface for units of measure.
 //@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
-abstract class Unit extends SchemaEnumValue implements SchemaSupport {
+abstract class Unit extends SchemaEnumValue {
   Unit(String schemaValue) : super(schemaValue);
 }
 
@@ -61,11 +61,7 @@ class LengthUnitValue extends UnitValue {
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_length-unit-value">length-unit-value</a>
-@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class LengthUnit extends Unit {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "length-unit-value", new SchemaVersion(1, 0));
-
   static const String FEMTOMETER = "fm";
   static const String PICOMETER = "pm";
   static const String NANOMETER = "nm";
@@ -80,13 +76,4 @@ class LengthUnit extends Unit {
   static const String MILE = "mi";
 
   LengthUnit(String schemaValue) : super(schemaValue);
-
-  factory LengthUnit.fromJson(Map<String, dynamic> json) => _$LengthUnitFromJson(json);
-
-  Map<String, dynamic> toJson() => _$LengthUnitToJson(this);
-
-  @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
 }

@@ -61,23 +61,10 @@ class PlaneAngleUnitValue extends UnitValue {
 
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_plane-angle-unit-value">plane-angle-unit-value</a>
-@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class PlaneAngleUnit extends Unit {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "plane-angle-unit-value", new SchemaVersion(1, 0));
-
   static const String DEGREE_OF_ARC = 'deg';
 
   PlaneAngleUnit(schemaValue) : super(schemaValue);
-
-  factory PlaneAngleUnit.fromJson(Map<String, dynamic> json) => _$PlaneAngleUnitFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PlaneAngleUnitToJson(this);
-
-  @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
 }
 
 /// A system used to acquire positions.
@@ -98,21 +85,8 @@ class PositioningSystem {
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_geoposition">geoposition</a>
-@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class SignalToNoiseRatioUnit extends Unit {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "plane-angle-unit-value", new SchemaVersion(1, 0));
-
   static const String DECIBEL = 'dB';
 
   SignalToNoiseRatioUnit(schemaValue) : super(schemaValue);
-
-  factory SignalToNoiseRatioUnit.fromJson(Map<String, dynamic> json) => _$SignalToNoiseRatioUnitFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SignalToNoiseRatioUnitToJson(this);
-
-  @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
 }

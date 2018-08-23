@@ -10,7 +10,7 @@ class Measure extends Object with AdditionalPropertySupport implements SchemaSup
       new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "abstract-measure", new SchemaVersion(1, 0));
 
   TimeFrame effectiveTimeFrame;
-  DescriptiveStatistic descriptiveStatistic;
+  String descriptiveStatistic;
   String userNotes;
 
   Measure() : super();

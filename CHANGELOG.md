@@ -1,8 +1,8 @@
 ## 0.0.3
 
-- Implementation of [BloodPressure] and associated schemas.
-- Adding support for JSON de/serialization of OMH the OMH schemas implemented so far.
-- Extensive unit test for the de/serialization
+- Implementation of `BloodPressure` and associated schemas.
+- Adding support for JSON de/serialization of the OMH schemas implemented so far.
+- Extensive unit test for the de/serialization, including loading test data from the OMH website.
 
 ## 0.0.2
 

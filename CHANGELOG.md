@@ -1,9 +1,15 @@
+## 0.0.3
+
+- Implementation of [BloodPressure] and associated schemas.
+- Adding support for JSON de/serialization of OMH the OMH schemas implemented so far.
+- Extensive unit test for the de/serialization
+
 ## 0.0.2
 
 - Implementation of OMH schemas: 
    - Activity, including `PhysicalActivity`, `KcalUnitValue`, `KcalUnit`, `StepCount`, `CalloriesBurden`, etc.
    - updates and refactor of other base schemas
-   - adding more tests
+ - Adding more tests
    
    
 ## 0.0.1
@@ -13,4 +19,4 @@
    - The core OMH units, including `Unit`, `UnitValue` and `TypedUnitValue`. 
    - Implementation of `DescriptiveStatistic`.
    - Support for the OMH geoposition schemas including `Geoposition`, `PlaneAngleUnitValue`, etc.
-   - Test skeleton -- which needs to be extended to better coverage.
+- Test skeleton -- which needs to be extended to better coverage.

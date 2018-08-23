@@ -1,15 +1,20 @@
 import 'package:openmhealth_schemas/openmhealth_schemas.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'activity.g.dart';
 
 /// A single episode of physical activity.
 ///
 /// OMH version 1.2
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_physical-activity">physical-activity</a>
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class PhysicalActivity extends Measure {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "physical-activity", new SchemaVersion(1, 2));
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "physical-activity", new SchemaVersion(1, 2));
 
   String activityName;
   LengthUnitValue distance;
-  SelfReportedIntensity reportedActivityIntensity;
+  String reportedActivityIntensity;
   KcalUnitValue caloriesBurned;
 
   /// Creates a [PhysicalActivity]. The [activityName] is required according to the OMH definition.
@@ -19,6 +24,10 @@ class PhysicalActivity extends Measure {
     this.reportedActivityIntensity,
     this.caloriesBurned,
   });
+
+  factory PhysicalActivity.fromJson(Map<String, dynamic> json) => _$PhysicalActivityFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PhysicalActivityToJson(this);
 
   @override
   SchemaId getSchemaId() {
@@ -30,24 +39,28 @@ class PhysicalActivity extends Measure {
 ///
 /// OMH version 1.2
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_physical-activity">physical-activity</a>
-class SelfReportedIntensity extends SchemaEnumValue {
-  static const String LIGHT = 'LIGHT';
-  static const String MODERATE = 'MODERATE';
-  static const String VIGOROUS = 'VIGOROUS';
-
-  SelfReportedIntensity(schemaValue) : super(schemaValue);
+class SelfReportedIntensity {
+  static const String LIGHT = 'light';
+  static const String MODERATE = 'moderate';
+  static const String VIGOROUS = 'vigorous';
 }
 
 /// A unit of kilocalories.
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_kcal-unit-value">kcal-unit-value</a>
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class KcalUnit extends Unit {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "kcal-unit-value", new SchemaVersion(1, 0));
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "kcal-unit-value", new SchemaVersion(1, 0));
 
   static const String KILOCALORIE = 'kcal';
 
   KcalUnit(schemaValue) : super(schemaValue);
+
+  factory KcalUnit.fromJson(Map<String, dynamic> json) => _$KcalUnitFromJson(json);
+
+  Map<String, dynamic> toJson() => _$KcalUnitToJson(this);
 
   @override
   SchemaId getSchemaId() {
@@ -57,10 +70,16 @@ class KcalUnit extends Unit {
 
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_kcal-unit-value">kcal-unit-value</a>
-class KcalUnitValue extends TypedUnitValue<KcalUnit> {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "kcal-unit-value", new SchemaVersion(1, 0));
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
+class KcalUnitValue extends UnitValue {
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "kcal-unit-value", new SchemaVersion(1, 0));
 
-  KcalUnitValue(KcalUnit unit, double value) : super(unit, value);
+  KcalUnitValue(String unit, double value) : super(unit, value);
+
+  factory KcalUnitValue.fromJson(Map<String, dynamic> json) => _$KcalUnitValueFromJson(json);
+
+  Map<String, dynamic> toJson() => _$KcalUnitValueToJson(this);
 
   @override
   SchemaId getSchemaId() {
@@ -72,13 +91,19 @@ class KcalUnitValue extends TypedUnitValue<KcalUnit> {
 ///
 /// OMH version 2.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_step-count">step-count</a>
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class StepCount extends Measure {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "step-count", new SchemaVersion(2, 0));
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "step-count", new SchemaVersion(2, 0));
 
   int stepCount;
 
   /// Creates a [StepCount]. The [stepCount] is required according to the OMH definition.
   StepCount(this.stepCount);
+
+  factory StepCount.fromJson(Map<String, dynamic> json) => _$StepCountFromJson(json);
+
+  Map<String, dynamic> toJson() => _$StepCountToJson(this);
 
   @override
   SchemaId getSchemaId() {
@@ -90,15 +115,20 @@ class StepCount extends Measure {
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_calories-burned">calories-burned</a>
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class CaloriesBurned extends Measure {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "calories-burned", new SchemaVersion(1, 0));
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "calories-burned", new SchemaVersion(1, 0));
 
   KcalUnitValue kcalBurned;
   String activityName;
   DescriptiveStatisticDenominator descriptiveStatisticDenominator;
 
   /// Creates a [CaloriesBurned]. The [kcalBurned] is required according to the OMH definition.
-  CaloriesBurned(this.kcalBurned);
+  CaloriesBurned(this.kcalBurned, {this.activityName});
+
+  factory CaloriesBurned.fromJson(Map<String, dynamic> json) => _$CaloriesBurnedFromJson(json);
+  Map<String, dynamic> toJson() => _$CaloriesBurnedToJson(this);
 
   @override
   SchemaId getSchemaId() {
@@ -110,14 +140,19 @@ class CaloriesBurned extends Measure {
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_minutes-moderate-activity">minutes-moderate-activity</a>
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class MinutesModerateActivity extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId(SchemaSupport.OMH_NAMESPACE, "minutes-moderate-activity", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "minutes-moderate-activity", new SchemaVersion(1, 0));
 
   DurationUnitValue minutesModerateActivity;
 
   /// Creates a [MinutesModerateActivity]. The [minutesModerateActivity] is required according to the OMH definition.
   MinutesModerateActivity(this.minutesModerateActivity);
+
+  factory MinutesModerateActivity.fromJson(Map<String, dynamic> json) => _$MinutesModerateActivityFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MinutesModerateActivityToJson(this);
 
   @override
   SchemaId getSchemaId() {

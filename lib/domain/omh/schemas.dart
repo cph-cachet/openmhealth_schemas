@@ -1,9 +1,22 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'schemas.g.dart';
+
+/// An abstract class represent any OMH schema.
 abstract class SchemaSupport {
   static const String OMH_NAMESPACE = "omh";
   static const String CACHET_NAMESPACE = "cachet";
 
   /// The schema this class corresponds to
   SchemaId getSchemaId();
+}
+
+/// An abstract class represent schema enumerations.
+abstract class SchemaEnumValue {
+  ///The schema enumeration value
+  String schemaValue;
+
+  SchemaEnumValue(this.schemaValue);
 }
 
 /**
@@ -14,14 +27,23 @@ abstract class SchemaSupport {
  * Version 1.0
  * See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_schema-id">schema-id</a>
  */
-class SchemaId implements Comparable<SchemaId>, SchemaSupport {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "schema-id", new SchemaVersion(1, 0));
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
+class SchemaId extends Object implements SchemaSupport, Comparable<SchemaId> {
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "schema-id", new SchemaVersion(1, 0));
 
   String namespace;
   String name;
-  SchemaVersion version;
+  String version;
 
-  SchemaId(this.namespace, this.name, this.version) : super();
+  @JsonKey(ignore: true)
+  SchemaVersion schemaVersion;
+
+  SchemaId(this.namespace, this.name, this.version) : this.schemaVersion = new SchemaVersion.fromString(version);
+  SchemaId.withVersion(this.namespace, this.name, this.schemaVersion) : this.version = schemaVersion.toString();
+
+  factory SchemaId.fromJson(Map<String, dynamic> json) => _$SchemaIdFromJson(json);
+  Map<String, dynamic> toJson() => _$SchemaIdToJson(this);
 
   @override
   int compareTo(SchemaId other) {
@@ -33,7 +55,7 @@ class SchemaId implements Comparable<SchemaId>, SchemaSupport {
       return name.compareTo(other.name);
     }
 
-    return version.compareTo(other.version);
+    return schemaVersion.compareTo(other.schemaVersion);
   }
 
   @override
@@ -48,6 +70,7 @@ class SchemaId implements Comparable<SchemaId>, SchemaSupport {
 }
 
 /// A semantic schema version, consisting of a major number, minor number, and an optional qualifier.
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class SchemaVersion implements Comparable<SchemaVersion> {
   //static const Pattern QUALIFIER_PATTERN = Pattern.compile(QUALIFIER_PATTERN_STRING);
   //static const String VERSION_PATTERN_STRING = "(\\d+)\\.(\\d+)(?:\\.(" + QUALIFIER_PATTERN_STRING + "))?";
@@ -60,6 +83,14 @@ class SchemaVersion implements Comparable<SchemaVersion> {
   SchemaVersion(this.major, this.minor, {this.qualifier}) {
     //TODO : should check if this is a valid version - see original OMH Java implementation.
   }
+
+  SchemaVersion.fromString(String version) {
+    //TODO : implement
+  }
+
+  factory SchemaVersion.fromJson(Map<String, dynamic> json) => _$SchemaVersionFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SchemaVersionToJson(this);
 
   /// Check if [version] is a valid OMH schema.
   static bool isValidVersion(String version) {
@@ -108,26 +139,5 @@ class SchemaVersion implements Comparable<SchemaVersion> {
     str += (qualifier != null) ? '.$qualifier' : '';
 
     return str;
-  }
-}
-
-/// An mixin class for schema classes that support additional properties.
-abstract class AdditionalPropertySupport {
-  Map<String, Object> _additionalProperties = new Map();
-
-  /// Sets an additional property.
-  void setAdditionalProperty(String path, Object value) {
-    //TODO : In the original OMH Java class it is stated that "This method supports dot-separated paths by creating nested maps when necessary." Is not implemented here.
-    _additionalProperties[path] = value;
-  }
-
-  /// Gets an additional property.
-  Object getAdditionalProperty(String name) {
-    return _additionalProperties[name];
-  }
-
-  /// Gets the additional properties.
-  Map<String, Object> getAdditionalProperties() {
-    return _additionalProperties;
   }
 }

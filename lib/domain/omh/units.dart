@@ -1,14 +1,10 @@
 import 'package:openmhealth_schemas/openmhealth_schemas.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-/// An abstract class represent schema enumerations.
-abstract class SchemaEnumValue {
-  ///The schema enumeration value
-  String schemaValue;
-
-  SchemaEnumValue(this.schemaValue);
-}
+part 'units.g.dart';
 
 /// A marker interface for units of measure.
+//@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 abstract class Unit extends SchemaEnumValue implements SchemaSupport {
   Unit(String schemaValue) : super(schemaValue);
 }
@@ -17,13 +13,19 @@ abstract class Unit extends SchemaEnumValue implements SchemaSupport {
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_unit-value">unit-value</a>
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class UnitValue extends Object with AdditionalPropertySupport implements SchemaSupport {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "unit-value", new SchemaVersion(1, 0));
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "unit-value", new SchemaVersion(1, 0));
 
   String unit;
   double value;
 
   UnitValue(this.unit, this.value);
+
+  factory UnitValue.fromJson(Map<String, dynamic> json) => _$UnitValueFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UnitValueToJson(this);
 
   @override
   SchemaId getSchemaId() {
@@ -36,19 +38,18 @@ class UnitValue extends Object with AdditionalPropertySupport implements SchemaS
   }
 }
 
-///A unit value implementation that uses a Java enum to represent units.
-class TypedUnitValue<T extends Unit> extends UnitValue {
-  T typedUnit;
-
-  TypedUnitValue(T unit, value) : super(unit.schemaValue, value);
-}
-
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_length-unit-value">length-unit-value</a>
-class LengthUnitValue extends TypedUnitValue<LengthUnit> implements SchemaSupport {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "length-unit-value", new SchemaVersion(1, 0));
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
+class LengthUnitValue extends UnitValue {
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "length-unit-value", new SchemaVersion(1, 0));
 
-  LengthUnitValue(LengthUnit unit, value) : super(unit, value);
+//  LengthUnitValue(LengthUnit unit, value) : super(unit.schemaValue, value);
+  LengthUnitValue(String unit, value) : super(unit, value);
+
+  factory LengthUnitValue.fromJson(Map<String, dynamic> json) => _$LengthUnitValueFromJson(json);
+  Map<String, dynamic> toJson() => _$LengthUnitValueToJson(this);
 
   @override
   SchemaId getSchemaId() {
@@ -60,8 +61,10 @@ class LengthUnitValue extends TypedUnitValue<LengthUnit> implements SchemaSuppor
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_length-unit-value">length-unit-value</a>
+@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class LengthUnit extends Unit {
-  static SchemaId SCHEMA_ID = new SchemaId(SchemaSupport.OMH_NAMESPACE, "length-unit-value", new SchemaVersion(1, 0));
+  static SchemaId SCHEMA_ID =
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "length-unit-value", new SchemaVersion(1, 0));
 
   static const String FEMTOMETER = "fm";
   static const String PICOMETER = "pm";
@@ -77,6 +80,10 @@ class LengthUnit extends Unit {
   static const String MILE = "mi";
 
   LengthUnit(String schemaValue) : super(schemaValue);
+
+  factory LengthUnit.fromJson(Map<String, dynamic> json) => _$LengthUnitFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LengthUnitToJson(this);
 
   @override
   SchemaId getSchemaId() {

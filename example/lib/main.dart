@@ -1,17 +1,3 @@
-# Open mHealth Schemas for Flutter
-
-A Flutter implementation of the [Open mHealth](http://www.openmhealth.org) [schemas](http://www.openmhealth.org/documentation/#/schema-docs/schema-library).
-The original Java schemas are available on the Open mHealth [GitHub](https://github.com/openmhealth/schemas). 
-
-## Usage
-
-To use this plugin, add `openmhealth_schemas` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
-
-### Example
-
-The following example shows how the OMH Flutter classes can be used to model OMH measures, convert these to JSON, and read them back from JSON. 
-
-``` dart
 import 'package:openmhealth_schemas/openmhealth_schemas.dart';
 import 'dart:convert';
 
@@ -55,7 +41,8 @@ void main() {
   //Finally, read a JSON string and convert it into a Flutter object.
   final act_1 = PhysicalActivity.fromJson(json.decode(omh_pa) as Map<String, dynamic>);
 
-  print("\nA person has been " + act_1.activityName + " " + act_1.distance.value.toString() + " " + act_1.distance.unit);
+  print(
+      "\nA person has been " + act_1.activityName + " " + act_1.distance.value.toString() + " " + act_1.distance.unit);
 }
 
 String _encode(Object object) => const JsonEncoder.withIndent(' ').convert(object);
@@ -64,27 +51,3 @@ String _encode(Object object) => const JsonEncoder.withIndent(' ').convert(objec
 // Testing if we can load these.
 final String omh_pa =
     '{    "activity_name": "walking", "distance": { "value": 3.1, "unit": "mi" }, "effective_time_frame": { "time_interval": { "start_date_time": "2015-02-06T06:25:00Z", "end_date_time": "2015-02-06T07:25:00Z" } },"kcal_burned": {"value": 160,"unit": "kcal"},"met_value": 3.5}';
-
-```
-
-
-## Getting Started with Flutter
-
-For help getting started with Flutter, view the online [documentation](https://flutter.io/).
-
-For help on editing package code, view the [documentation](https://flutter.io/developing-packages/).
-
-
- 
-## Features and bugs
-
-Please file feature requests and bug reports at the [issue tracker][tracker].
-
-[tracker]: https://github.com/cph-cachet/openmhealth_schemas/issues
-
-## License
-
-This software is copyright (c) 2018 [Copenhagen Center for Health Technology (CACHET)](http://www.cachet.dk/) at the [Technical University of Denmark (DTU)](http://www.dtu.dk).
-This software is made available 'as-is' in a MIT [license](/LICENSE).
-
-

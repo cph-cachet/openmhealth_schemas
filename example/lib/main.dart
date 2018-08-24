@@ -23,6 +23,7 @@ void main() {
       elevation: new LengthUnitValue((LengthUnit.METER), 1548.5));
 
   position.positioningSystem = PositioningSystem.GPS;
+  position.effectiveTimeFrame = new TimeFrame(dateTime: DateTime.now());
   print("\nGeoposition:\n" + _encode(position));
 
   //Creating OMH data point ready to be uploaded to an OMH sever

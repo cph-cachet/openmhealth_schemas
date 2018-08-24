@@ -9,15 +9,11 @@ To use this plugin, add `openmhealth_schemas` as a [dependency in your pubspec.y
 
 ### Example
 
-The following example shows how the OMH Flutter classes can be used to model OMH measures, convert these to JSON, and read them back from JSON. 
+The following example shows how to use the OMH Flutter classes  to model OMH measures, convert these to JSON, and read them back from JSON. 
 
-``` dart
-import 'package:openmhealth_schemas/openmhealth_schemas.dart';
-import 'dart:convert';
+First, create an OMH `BloodPressure` measure similar to the [OMH BloodPressure example](http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure).
 
-void main() {
-  // Creating a [BloodPressure] similar to the one shown at
-  // http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure
+```dart
   BloodPressure bp = new BloodPressure(new SystolicBloodPressure(BloodPressureUnit.MM_OF_MERCURY, 160.0),
       new DiastolicBloodPressure(BloodPressureUnit.MM_OF_MERCURY, 60.0),
       positionDuringMeasurement: PositionDuringMeasurement.SITTING);
@@ -26,45 +22,81 @@ void main() {
   TimeInterval time = new TimeInterval(startDateTime: start, endDateTime: end);
   bp.effectiveTimeFrame = new TimeFrame(timeInterval: time);
   bp.descriptiveStatistic = DescriptiveStatistic.MAXIMUM;
+```
 
-  // Now convert this to JSON
-  final bp_json = _encode(bp);
-  print("\nBloodPressure:\n" + bp_json);
+This can now be converted to JSON.
 
-  // Similarly - create a [Geoposition] object, convert it to JSON and print it.
+```dart
+  final bp_json = JsonEncoder.withIndent(' ').convert(bp);
+```
+
+which should produce the following JSON
+
+```json
+{
+ "effective_time_frame": {
+  "time_interval": {
+   "start_date_time": "2016-02-05T00:00:00.000",
+   "end_date_time": "2016-06-05T00:00:00.000"
+  }
+ },
+ "descriptive_statistic": "maximum",
+ "systolic_blood_pressure": {
+  "unit": "mmHg",
+  "value": 160.0
+ },
+ "diastolic_blood_pressure": {
+  "unit": "mmHg",
+  "value": 60.0
+ },
+ "position_during_measurement": "sitting"
+}
+```  
+
+Similarly, a OMH `Geoposition` similar to the [OMH Geoposition example](http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_geoposition) can be created
+
+```dart
   Geoposition position = new Geoposition(new PlaneAngleUnitValue(PlaneAngleUnit.DEGREE_OF_ARC, 40.059692382),
       new PlaneAngleUnitValue(PlaneAngleUnit.DEGREE_OF_ARC, -105.21440124511719),
       elevation: new LengthUnitValue((LengthUnit.METER), 1548.5));
 
+  position.effectiveTimeFrame = new TimeFrame(dateTime: DateTime.now());
   position.positioningSystem = PositioningSystem.GPS;
-  print("\nGeoposition:\n" + _encode(position));
+``` 
 
-  //Creating OMH data point ready to be uploaded to an OMH sever
+This should give the following JSON OMH measure.
 
-  //First, the data point for the blood pressure measure.
-  DataPoint dp_1 = new DataPoint(bp);
-  print("\nDataPoint_BloodPressure:\n" + _encode(dp_1));
-
-  // Then the data point for the geo position measure.
-  DataPoint dp_2 = new DataPoint(position,
-      userId: "bardram",
-      provenance: new DataPointAcquisitionProvenance("Android Nexus Phone", modality: DataPointModality.SENSED));
-
-  print("\nDataPoint_Geoposition:\n" + _encode(dp_2));
-
-  //Finally, read a JSON string and convert it into a Flutter object.
-  final act_1 = PhysicalActivity.fromJson(json.decode(omh_pa) as Map<String, dynamic>);
-
-  print("\nA person has been " + act_1.activityName + " " + act_1.distance.value.toString() + " " + act_1.distance.unit);
+```json
+{
+ "effective_time_frame": {
+  "date_time": "2018-08-24T11:08:33.772301"
+ },
+ "latitude": {
+  "unit": "deg",
+  "value": 40.059692382
+ },
+ "longitude": {
+  "unit": "deg",
+  "value": -105.21440124511719
+ },
+ "elevation": {
+  "unit": "m",
+  "value": 1548.5
+ },
+ "positioning_system": "GPS"
 }
+```
 
-String _encode(Object object) => const JsonEncoder.withIndent(' ').convert(object);
+An OMH `DataPoint` for the above `BloodPressure` measure can be created by;
 
-// The following data is various OMH JSON examples from the OMH website.
-// Testing if we can load these.
-final String omh_pa =
-    '{    "activity_name": "walking", "distance": { "value": 3.1, "unit": "mi" }, "effective_time_frame": { "time_interval": { "start_date_time": "2015-02-06T06:25:00Z", "end_date_time": "2015-02-06T07:25:00Z" } },"kcal_burned": {"value": 160,"unit": "kcal"},"met_value": 3.5}';
+```dart
+  DataPoint dp = new DataPoint(bp);
+```
 
+Finally, if you have a OMH JSON measure (in this case a `PhysicalActivity`) you can instantiate a Dart object from it by;
+
+```dart
+  final activity = PhysicalActivity.fromJson(json.decode(json_activity_string) as Map<String, dynamic>);
 ```
 
 

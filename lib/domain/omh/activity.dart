@@ -49,23 +49,10 @@ class SelfReportedIntensity {
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_kcal-unit-value">kcal-unit-value</a>
-@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class KcalUnit extends Unit {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "kcal-unit-value", new SchemaVersion(1, 0));
-
   static const String KILOCALORIE = 'kcal';
 
   KcalUnit(schemaValue) : super(schemaValue);
-
-  factory KcalUnit.fromJson(Map<String, dynamic> json) => _$KcalUnitFromJson(json);
-
-  Map<String, dynamic> toJson() => _$KcalUnitToJson(this);
-
-  @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
 }
 
 /// OMH version 1.0

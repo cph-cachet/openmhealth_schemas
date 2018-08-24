@@ -3,13 +3,17 @@
 A Flutter implementation of the [Open mHealth](http://www.openmhealth.org) [schemas](http://www.openmhealth.org/documentation/#/schema-docs/schema-library).
 The original Java schemas are available on the Open mHealth [GitHub](https://github.com/openmhealth/schemas). 
 
+__Disclaimer__: Note that not all OMH schemas are implemented yet. This is work in progress. 
+
 ## Usage
 
 To use this plugin, add `openmhealth_schemas` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-### Example
+## Example
 
 The following example shows how to use the OMH Flutter classes  to model OMH measures, convert these to JSON, and read them back from JSON. 
+
+#### Creating OMH Measures as Dart Objects
 
 First, create an OMH `BloodPressure` measure similar to the [OMH BloodPressure example](http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure).
 
@@ -87,17 +91,57 @@ This should give the following JSON OMH measure.
 }
 ```
 
+#### Reading OMH JSON Schemas
+
+If you have a OMH JSON measure (in this case a `PhysicalActivity`) you can instantiate a Dart object from it by;
+
+```dart
+  final activity = PhysicalActivity.fromJson(json.decode(json_activity_string) as Map<String, dynamic>);
+```
+
+#### Creating and Uploading OMH Data Points
+
 An OMH `DataPoint` for the above `BloodPressure` measure can be created by;
 
 ```dart
   DataPoint dp = new DataPoint(bp);
 ```
 
-Finally, if you have a OMH JSON measure (in this case a `PhysicalActivity`) you can instantiate a Dart object from it by;
+which can be converted (using `JsonEncoder.withIndent(' ').convert(dp)`) into the following OMH JSON data point with its header and body.
 
-```dart
-  final activity = PhysicalActivity.fromJson(json.decode(json_activity_string) as Map<String, dynamic>);
+```json
+{
+ "header": {
+  "id": "747cf980-9620-11e8-afe9-9bf5923b2a8c",
+  "creation_date_time": "2018-08-24T11:31:18.681644",
+  "schema_id": {
+   "namespace": "omh",
+   "name": "blood-pressure",
+   "version": "1.0"
+  }
+ },
+ "body": {
+  "effective_time_frame": {
+   "time_interval": {
+    "start_date_time": "2016-02-05T00:00:00.000",
+    "end_date_time": "2016-06-05T00:00:00.000"
+   }
+  },
+  "descriptive_statistic": "maximum",
+  "systolic_blood_pressure": {
+   "unit": "mmHg",
+   "value": 160.0
+  },
+  "diastolic_blood_pressure": {
+   "unit": "mmHg",
+   "value": 60.0
+  },
+  "position_during_measurement": "sitting"
+ }
+}
 ```
+
+Uploading to a OMH Data Storage Unit (DSU) (like the [omh-dsu-ri](https://github.com/openmhealth/omh-dsu-ri)) is not implemented yet.
 
 
 ## Getting Started with Flutter

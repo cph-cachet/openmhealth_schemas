@@ -10,21 +10,17 @@ Acceleration _$AccelerationFromJson(Map<String, dynamic> json) {
   return Acceleration(
       json['acceleration_x'] == null
           ? null
-          : AccelerationUnitValue.fromJson(
-              json['acceleration_x'] as Map<String, dynamic>),
+          : AccelerationUnitValue.fromJson(json['acceleration_x'] as Map<String, dynamic>),
       json['acceleration_y'] == null
           ? null
-          : AccelerationUnitValue.fromJson(
-              json['acceleration_y'] as Map<String, dynamic>),
+          : AccelerationUnitValue.fromJson(json['acceleration_y'] as Map<String, dynamic>),
       acceleration_z: json['acceleration_z'] == null
           ? null
-          : AccelerationUnitValue.fromJson(
-              json['acceleration_z'] as Map<String, dynamic>),
+          : AccelerationUnitValue.fromJson(json['acceleration_z'] as Map<String, dynamic>),
       sensor_body_location: json['sensor_body_location'] as String)
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
-        : TimeFrame.fromJson(
-            json['effective_time_frame'] as Map<String, dynamic>)
+        : TimeFrame.fromJson(json['effective_time_frame'] as Map<String, dynamic>)
     ..descriptiveStatistic = json['descriptive_statistic'] as String
     ..userNotes = json['user_notes'] as String;
 }
@@ -48,14 +44,11 @@ Map<String, dynamic> _$AccelerationToJson(Acceleration instance) {
   return val;
 }
 
-AccelerationUnitValue _$AccelerationUnitValueFromJson(
-    Map<String, dynamic> json) {
-  return AccelerationUnitValue(
-      json['unit'] as String, (json['value'] as num)?.toDouble());
+AccelerationUnitValue _$AccelerationUnitValueFromJson(Map<String, dynamic> json) {
+  return AccelerationUnitValue(json['unit'] as String, (json['value'] as num)?.toDouble());
 }
 
-Map<String, dynamic> _$AccelerationUnitValueToJson(
-    AccelerationUnitValue instance) {
+Map<String, dynamic> _$AccelerationUnitValueToJson(AccelerationUnitValue instance) {
   var val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

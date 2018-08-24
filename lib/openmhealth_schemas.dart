@@ -10,3 +10,4 @@ export 'package:openmhealth_schemas/domain/omh/activity.dart';
 export 'package:openmhealth_schemas/domain/omh/bloodpressure.dart';
 export 'package:openmhealth_schemas/domain/omh/datapoint.dart';
 export 'package:openmhealth_schemas/domain/omh/acceleration.dart';
+export 'package:openmhealth_schemas/domain/omh/cardio.dart';

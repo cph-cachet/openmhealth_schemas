@@ -3,7 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'activity.g.dart';
 
-/// A single episode of physical activity.
+/// This schema represents a single episode of [physical activity](http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=68130003),
+/// including the name of the activity, duration, distance, intensity and calories burned.
 ///
 /// OMH version 1.2
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_physical-activity">physical-activity</a>
@@ -74,7 +75,7 @@ class KcalUnitValue extends UnitValue {
   }
 }
 
-/// A single step count measure.
+/// This schema represents [number of steps](http://bioportal.bioontology.org/ontologies/LOINC?p=classes&conceptid=55423-8).
 ///
 /// OMH version 2.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_step-count">step-count</a>
@@ -99,7 +100,7 @@ class StepCount extends Measure {
   }
 }
 
-/// The calories burned in a single episode of activity.
+/// This schema represents the amount of [calories burned](http://bioportal.bioontology.org/ontologies/LOINC?p=classes&conceptid=41981-2) in kilocalories (kcal).
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_calories-burned">calories-burned</a>
@@ -139,7 +140,6 @@ class MinutesModerateActivity extends Measure {
   MinutesModerateActivity(this.minutesModerateActivity);
 
   factory MinutesModerateActivity.fromJson(Map<String, dynamic> json) => _$MinutesModerateActivityFromJson(json);
-
   Map<String, dynamic> toJson() => _$MinutesModerateActivityToJson(this);
 
   @override

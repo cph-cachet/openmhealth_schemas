@@ -3,7 +3,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'bloodpressure.g.dart';
 
-/// A person’s blood pressure as a combination of a systolic and a diastolic blood pressure.
+/// This schema represents a person’s blood pressure as a combination of a systolic blood pressure and diastolic blood pressure,
+/// and whether the patient was lying down, sitting, or standing when the blood pressure was obtained.
+/// This schema can be used for either a single blood pressure measurement, or for basic descriptive statistics (see the [DescriptiveStatistic] schema).
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure">blood-pressure</a>

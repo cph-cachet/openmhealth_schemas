@@ -77,6 +77,18 @@ void main() {
     expect(bp.positionDuringMeasurement, "sitting");
   });
 
+  test('OMH Heart Rate Schema Test', () {
+    //Testing
+    HeartRate hr = new HeartRate(new HeartRateUnitValue(HeartRateUnit.BEATS_PER_MINUTE, 50.0));
+    hr.userNotes = "I felt quite dizzy";
+    hr.effectiveTimeFrame = new TimeFrame(dateTime: DateTime.now());
+
+    expect(hr.heartRate.value, 50);
+    expect(hr.userNotes, isNotNull);
+
+    print("\nHeartRate:\n" + _encode(hr));
+  });
+
   test('OMH JSON Serialization Test', () {
     BloodPressure bp_1 = new BloodPressure(new SystolicBloodPressure(BloodPressureUnit.MM_OF_MERCURY, 160.0),
         new DiastolicBloodPressure(BloodPressureUnit.MM_OF_MERCURY, 80.0),

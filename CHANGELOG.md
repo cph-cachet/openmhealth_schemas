@@ -1,3 +1,8 @@
+## 0.0.4
+- Implemented cardio-related schemas, such as `RrInterval` and `HeartRate`.
+- Improvement to documentation.
+
+
 ## 0.0.3
 
 - Implementation of `BloodPressure` and associated schemas.

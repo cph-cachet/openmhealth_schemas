@@ -29,7 +29,6 @@ class DataPoint implements SchemaSupport {
   }
 
   factory DataPoint.fromJson(Map<String, dynamic> json) => _$DataPointFromJson(json);
-
   Map<String, dynamic> toJson() => _$DataPointToJson(this);
 
   @override

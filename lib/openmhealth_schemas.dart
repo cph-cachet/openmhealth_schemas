@@ -1,3 +1,7 @@
+///A Flutter implementation of the [Open mHealth](http://www.openmhealth.org) schemas.
+///The original Java schemas are available on the [Open mHealth GitHub](https://github.com/openmhealth/schemas).
+///
+///Disclaimer: Note that not all OMH schemas are implemented yet. This is work in progress.
 library openmhealth_schemas;
 
 export 'package:openmhealth_schemas/domain/omh/schemas.dart';

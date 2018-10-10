@@ -227,7 +227,7 @@ String _encode(Object object) => const JsonEncoder.withIndent(' ').convert(objec
 // The following data is various OMH JSON examples from the OMH website.
 // Testing if we can load these.
 final String omh_pa_1 =
-    '{    "activity_name": "walking", "distance": { "value": 3.1, "unit": "mi" }, "effective_time_frame": { "time_interval": { "start_date_time": "2015-02-06T06:25:00Z", "end_date_time": "2015-02-06T07:25:00Z" } },"kcal_burned": {"value": 160,"unit": "kcal"},"met_value": 3.5}';
+    '{"activity_name": "walking", "distance": { "value": 3.1, "unit": "mi" }, "effective_time_frame": { "time_interval": { "start_date_time": "2015-02-06T06:25:00Z", "end_date_time": "2015-02-06T07:25:00Z" } },"kcal_burned": {"value": 160,"unit": "kcal"},"met_value": 3.5}';
 
 final String omh_pa_2 =
-    '{    "activity_name": "walking","distance": {"value": 1.5,"unit": "mi"},"reported_activity_intensity": "moderate"}';
+    '{"activity_name": "walking","distance": {"value": 1.5,"unit": "mi"},"reported_activity_intensity": "moderate"}';

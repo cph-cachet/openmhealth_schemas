@@ -16,11 +16,11 @@ This can be set using the following Flutter command:
 flutter channel dev
 ```
 
-## Example
+# Example
 
 The following example shows how to use the OMH Flutter classes  to model OMH measures, convert these to JSON, and read them back from JSON. 
 
-#### Creating OMH Measures as Dart Objects
+## Creating OMH Measures as Dart Objects
 
 First, create an OMH `BloodPressure` measure similar to the [OMH BloodPressure example](http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure).
 
@@ -98,7 +98,7 @@ This should give the following JSON OMH measure.
 }
 ```
 
-#### Reading OMH JSON Schemas
+## Reading OMH JSON Schemas
 
 If you have a OMH JSON measure (in this case a `PhysicalActivity`) you can instantiate a Dart object from it by;
 
@@ -106,7 +106,7 @@ If you have a OMH JSON measure (in this case a `PhysicalActivity`) you can insta
   final activity = PhysicalActivity.fromJson(json.decode(json_activity_string) as Map<String, dynamic>);
 ```
 
-#### Creating and Uploading OMH Data Points
+## Creating and Uploading OMH Data Points
 
 An OMH `DataPoint` for the above `BloodPressure` measure can be created by;
 
@@ -151,15 +151,14 @@ which can be converted (using `JsonEncoder.withIndent(' ').convert(dp)`) into th
 Uploading to a OMH Data Storage Unit (DSU) (like the [omh-dsu-ri](https://github.com/openmhealth/omh-dsu-ri)) is not implemented yet.
 
 
-## Getting Started with Flutter
+# Getting Started with Flutter
 
 For help getting started with Flutter, view the online [documentation](https://flutter.io/).
 
 For help on editing package code, view the [documentation](https://flutter.io/developing-packages/).
 
-
  
-## Features and bugs
+# Features and bugs
 
 Please file feature requests and bug reports at the [issue tracker][tracker].
 

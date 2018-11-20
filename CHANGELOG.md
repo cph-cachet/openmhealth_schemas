@@ -1,3 +1,9 @@
+## 0.1.2
+- support for surveys added
+
+## 0.1.1
+- Updated documentation
+ 
 ## 0.1.0
 - Update to support Dart 2.0
 

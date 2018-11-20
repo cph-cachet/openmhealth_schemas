@@ -19,8 +19,8 @@ Map<String, dynamic> _$UnitValueToJson(UnitValue instance) {
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }
 
@@ -37,7 +37,7 @@ Map<String, dynamic> _$LengthUnitValueToJson(LengthUnitValue instance) {
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }

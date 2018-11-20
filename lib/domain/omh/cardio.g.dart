@@ -92,8 +92,8 @@ Map<String, dynamic> _$HeartRateUnitValueToJson(HeartRateUnitValue instance) {
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }
 
@@ -111,7 +111,7 @@ Map<String, dynamic> _$RrInterUnitValueToJson(RrInterUnitValue instance) {
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }

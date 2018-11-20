@@ -59,8 +59,8 @@ Map<String, dynamic> _$SystolicBloodPressureToJson(
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }
 
@@ -79,7 +79,7 @@ Map<String, dynamic> _$DiastolicBloodPressureToJson(
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }

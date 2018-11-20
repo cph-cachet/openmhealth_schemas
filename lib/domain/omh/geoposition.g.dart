@@ -65,7 +65,7 @@ Map<String, dynamic> _$PlaneAngleUnitValueToJson(PlaneAngleUnitValue instance) {
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }

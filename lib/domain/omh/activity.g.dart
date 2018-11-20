@@ -58,8 +58,8 @@ Map<String, dynamic> _$KcalUnitValueToJson(KcalUnitValue instance) {
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }
 

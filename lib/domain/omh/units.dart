@@ -18,8 +18,8 @@ class UnitValue extends Object with AdditionalPropertySupport implements SchemaS
   static SchemaId SCHEMA_ID =
       new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "unit-value", new SchemaVersion(1, 0));
 
-  String unit;
   double value;
+  String unit;
 
   UnitValue(this.unit, this.value);
 

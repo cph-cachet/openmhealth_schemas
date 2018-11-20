@@ -64,7 +64,7 @@ Map<String, dynamic> _$AccelerationUnitValueToJson(
     }
   }
 
-  writeNotNull('unit', instance.unit);
   writeNotNull('value', instance.value);
+  writeNotNull('unit', instance.unit);
   return val;
 }

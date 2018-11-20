@@ -46,7 +46,7 @@ class SelfReportedIntensity {
   static const String VIGOROUS = 'vigorous';
 }
 
-/// A unit of kilocalories.
+/// A unit of kilo-calories.
 ///
 /// OMH version 1.0
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_kcal-unit-value">kcal-unit-value</a>

@@ -92,6 +92,8 @@ void main() {
     test('- survey', () {
       Survey survey = new Survey();
 
+      Survey.SCHEMA_ID
+
       SurveyItem item_1 = SurveyItem(SurveyQuestion("How are you doing?"));
       item_1.answeredDateTime = DateTime.now();
       item_1.answers.add(SurveyCategoricalAnswer(value: ({"1": "Fine, thank you", "2": "OK"})));

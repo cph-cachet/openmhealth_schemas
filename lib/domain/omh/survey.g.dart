@@ -198,15 +198,14 @@ Map<String, dynamic> _$SurveyCategoricalAnswerToJson(
 }
 
 SurveyDateAnswer _$SurveyDateAnswerFromJson(Map<String, dynamic> json) {
-  return SurveyDateAnswer()
+  return SurveyDateAnswer(
+      json['value'] == null ? null : DateTime.parse(json['value'] as String))
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
             json['effective_time_frame'] as Map<String, dynamic>)
     ..descriptiveStatistic = json['descriptive_statistic'] as String
-    ..userNotes = json['user_notes'] as String
-    ..value =
-        json['value'] == null ? null : DateTime.parse(json['value'] as String);
+    ..userNotes = json['user_notes'] as String;
 }
 
 Map<String, dynamic> _$SurveyDateAnswerToJson(SurveyDateAnswer instance) {

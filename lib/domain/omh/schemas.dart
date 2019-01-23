@@ -29,15 +29,14 @@ abstract class SchemaEnumValue {
  */
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class SchemaId extends Object implements SchemaSupport, Comparable<SchemaId> {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "schema-id", new SchemaVersion(1, 0));
+  static final SchemaId SCHEMA_ID = SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "schema-id", SchemaVersion(1, 0));
 
-  String namespace;
-  String name;
-  String version;
+  final String namespace;
+  final String name;
+  final String version;
 
   @JsonKey(ignore: true)
-  SchemaVersion schemaVersion;
+  final SchemaVersion schemaVersion;
 
   SchemaId(this.namespace, this.name, this.version) : this.schemaVersion = new SchemaVersion.fromString(version);
   SchemaId.withVersion(this.namespace, this.name, this.schemaVersion) : this.version = schemaVersion.toString();
@@ -58,15 +57,9 @@ class SchemaId extends Object implements SchemaSupport, Comparable<SchemaId> {
     return schemaVersion.compareTo(other.schemaVersion);
   }
 
-  @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
+  SchemaId getSchemaId() => SCHEMA_ID;
 
-  @override
-  String toString() {
-    return '$namespace.$name.v$version';
-  }
+  String toString() => '$namespace.$name.v$version';
 }
 
 /// A semantic schema version, consisting of a major number, minor number, and an optional qualifier.
@@ -76,16 +69,21 @@ class SchemaVersion implements Comparable<SchemaVersion> {
   //static const String VERSION_PATTERN_STRING = "(\\d+)\\.(\\d+)(?:\\.(" + QUALIFIER_PATTERN_STRING + "))?";
   //final Pattern VERSION_PATTERN = Pattern.compile(VERSION_PATTERN_STRING);
 
-  int major;
-  int minor;
+  int major = 1;
+  int minor = 0;
   String qualifier;
 
   SchemaVersion(this.major, this.minor, {this.qualifier}) {
     //TODO : should check if this is a valid version - see original OMH Java implementation.
+    assert(major != null);
+    assert(minor != null);
   }
 
   SchemaVersion.fromString(String version) {
-    //TODO : implement
+    List<String> l = version.split('.');
+    this.major = int.parse(l[0] ?? '1');
+    this.minor = int.parse(l[1] ?? '0');
+    this.qualifier = l[2] ?? '';
   }
 
   factory SchemaVersion.fromJson(Map<String, dynamic> json) => _$SchemaVersionFromJson(json);
@@ -103,8 +101,6 @@ class SchemaVersion implements Comparable<SchemaVersion> {
   ///
   /// Returns a negative integer if [this] is a older version than [other], a positive integer if [this] a newer version than [other]
   /// and zero if they are the same version.
-
-  @override
   int compareTo(SchemaVersion other) {
     if (major < other.major) {
       return -1;
@@ -132,12 +128,5 @@ class SchemaVersion implements Comparable<SchemaVersion> {
     return qualifier.compareTo(other.qualifier);
   }
 
-  @override
-  String toString() {
-    String str = (major != null) ? '$major' : '';
-    str += (minor != null) ? '.$minor' : '';
-    str += (qualifier != null) ? '.$qualifier' : '';
-
-    return str;
-  }
+  String toString() => '$major.$minor${(qualifier != null) ? '.$qualifier' : ''}';
 }

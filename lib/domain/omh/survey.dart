@@ -10,7 +10,7 @@ part 'survey.g.dart';
 /// See <a href="https://github.com/openmhealth/schemas/blob/feature/generic-survey/schema/omh/survey-0.1.json">survey</a>
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class Survey extends Measure {
-  static SchemaId SCHEMA_ID = new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "survey", new SchemaVersion(0, 1));
+  static final SchemaId SCHEMA_ID = SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "survey", SchemaVersion(0, 1));
 
   /// The list of questions and answers that make up this survey.
   List<SurveyItem> items = List<SurveyItem>();

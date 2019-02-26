@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:openmhealth_schemas/openmhealth_schemas.dart';
 import 'dart:convert';
+import 'package:openmhealth_schemas/openmhealth_schemas.dart';
 
 void main() {
   group("OMH Schema Tests", () {
@@ -91,8 +91,6 @@ void main() {
 
     test('- survey', () {
       Survey survey = new Survey();
-
-      Survey.SCHEMA_ID
 
       SurveyItem item_1 = SurveyItem(SurveyQuestion("How are you doing?"));
       item_1.answeredDateTime = DateTime.now();

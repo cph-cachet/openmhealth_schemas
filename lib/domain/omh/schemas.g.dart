@@ -12,7 +12,7 @@ SchemaId _$SchemaIdFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SchemaIdToJson(SchemaId instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -32,7 +32,7 @@ SchemaVersion _$SchemaVersionFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SchemaVersionToJson(SchemaVersion instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

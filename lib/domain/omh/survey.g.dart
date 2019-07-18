@@ -28,7 +28,7 @@ Survey _$SurveyFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurveyToJson(Survey instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -69,7 +69,7 @@ SurveyItem _$SurveyItemFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurveyItemToJson(SurveyItem instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -99,7 +99,7 @@ SurveyQuestion _$SurveyQuestionFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurveyQuestionToJson(SurveyQuestion instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -127,7 +127,7 @@ AbstractSurveyAnswer _$AbstractSurveyAnswerFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$AbstractSurveyAnswerToJson(
     AbstractSurveyAnswer instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -152,7 +152,7 @@ SurveyAnswer _$SurveyAnswerFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurveyAnswerToJson(SurveyAnswer instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -170,8 +170,9 @@ Map<String, dynamic> _$SurveyAnswerToJson(SurveyAnswer instance) {
 SurveyCategoricalAnswer _$SurveyCategoricalAnswerFromJson(
     Map<String, dynamic> json) {
   return SurveyCategoricalAnswer(
-      value: (json['value'] as Map<String, dynamic>)
-          ?.map((k, e) => MapEntry(k, e as String)))
+      value: (json['value'] as Map<String, dynamic>)?.map(
+    (k, e) => MapEntry(k, e as String),
+  ))
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -182,7 +183,7 @@ SurveyCategoricalAnswer _$SurveyCategoricalAnswerFromJson(
 
 Map<String, dynamic> _$SurveyCategoricalAnswerToJson(
     SurveyCategoricalAnswer instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -209,7 +210,7 @@ SurveyDateAnswer _$SurveyDateAnswerFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurveyDateAnswerToJson(SurveyDateAnswer instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -235,7 +236,7 @@ SurveyTimeAnswer _$SurveyTimeAnswerFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurveyTimeAnswerToJson(SurveyTimeAnswer instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -265,7 +266,7 @@ SurveyUnitValueAnswer _$SurveyUnitValueAnswerFromJson(
 
 Map<String, dynamic> _$SurveyUnitValueAnswerToJson(
     SurveyUnitValueAnswer instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -300,7 +301,7 @@ SurveyDeliveryDetails _$SurveyDeliveryDetailsFromJson(
 
 Map<String, dynamic> _$SurveyDeliveryDetailsToJson(
     SurveyDeliveryDetails instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -329,7 +330,7 @@ SurveyScore _$SurveyScoreFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SurveyScoreToJson(SurveyScore instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

@@ -25,7 +25,7 @@ PhysicalActivity _$PhysicalActivityFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PhysicalActivityToJson(PhysicalActivity instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -50,7 +50,7 @@ KcalUnitValue _$KcalUnitValueFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$KcalUnitValueToJson(KcalUnitValue instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -76,7 +76,7 @@ StepCount _$StepCountFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$StepCountToJson(StepCount instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -110,7 +110,7 @@ CaloriesBurned _$CaloriesBurnedFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CaloriesBurnedToJson(CaloriesBurned instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -144,7 +144,7 @@ MinutesModerateActivity _$MinutesModerateActivityFromJson(
 
 Map<String, dynamic> _$MinutesModerateActivityToJson(
     MinutesModerateActivity instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

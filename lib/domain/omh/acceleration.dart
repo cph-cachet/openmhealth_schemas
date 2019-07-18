@@ -10,7 +10,7 @@ part 'acceleration.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class Acceleration extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "acceleration", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.ACCELERATION, new SchemaVersion(1, 0));
 
   AccelerationUnitValue acceleration_x;
   AccelerationUnitValue acceleration_y;

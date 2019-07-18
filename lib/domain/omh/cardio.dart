@@ -11,7 +11,7 @@ part 'cardio.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class HeartRate extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "heart-rate", new SchemaVersion(1, 1));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.HEART_RATE, new SchemaVersion(1, 1));
 
   HeartRateUnitValue heartRate;
   String temporalRelationshipToPhysicalActivity;
@@ -37,7 +37,7 @@ class HeartRate extends Measure {
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class RrInterval extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "rr-interval", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.RR_INTERVAL, new SchemaVersion(1, 0));
 
   RrInterUnitValue rrInterval;
   String temporalRelationshipToPhysicalActivity;

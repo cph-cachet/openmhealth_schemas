@@ -10,7 +10,8 @@ part 'survey.g.dart';
 /// See <a href="https://github.com/openmhealth/schemas/blob/feature/generic-survey/schema/omh/survey-0.1.json">survey</a>
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class Survey extends Measure {
-  static final SchemaId SCHEMA_ID = SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "survey", SchemaVersion(0, 1));
+  static final SchemaId SCHEMA_ID =
+      SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.SURVEY, SchemaVersion(0, 1));
 
   /// The list of questions and answers that make up this survey.
   List<SurveyItem> items = List<SurveyItem>();
@@ -39,7 +40,7 @@ class Survey extends Measure {
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class SurveyItem extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "survey-item", new SchemaVersion(0, 1));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.SURVEY_ITEM, new SchemaVersion(0, 1));
 
   /// The question being asked.
   SurveyQuestion question;
@@ -74,7 +75,7 @@ class SurveyItem extends Measure {
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class SurveyQuestion extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "survey-question", new SchemaVersion(0, 1));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.SURVEY_QUESTION, new SchemaVersion(0, 1));
 
   /// A label used to identify the question.
   String label;
@@ -98,7 +99,7 @@ class SurveyQuestion extends Measure {
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class AbstractSurveyAnswer extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "survey-answer", new SchemaVersion(0, 1));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.SURVEY_ANSWER, new SchemaVersion(0, 1));
 
   AbstractSurveyAnswer();
 

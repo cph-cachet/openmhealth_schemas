@@ -4,8 +4,30 @@ part 'schemas.g.dart';
 
 /// An abstract class represent any OMH schema.
 abstract class SchemaSupport {
-  static const String OMH_NAMESPACE = "omh";
-  static const String CACHET_NAMESPACE = "cachet";
+  static const String OMH_NAMESPACE = 'omh';
+  static const String CACHET_NAMESPACE = 'cachet';
+
+  static const String ACCELERATION = 'acceleration';
+  static const String ACTIVITY = 'physical-activity';
+  static const String BLOOD_PRESSURE = 'blood-pressure';
+  static const String SYSTOLIC_BLOOD_PRESSURE = 'systolic-blood-pressure';
+  static const String DIASTOLIC_BLOOD_PRESSURE = 'diastolic-blood-pressure';
+  static const String HEART_RATE = 'heart-rate';
+  static const String RR_INTERVAL = 'rr-interval';
+  static const String DATA_POINT = 'data-point';
+  static const String GEOPOSITION = 'geoposition';
+  static const String MEASURE = 'abstract-measure';
+  static const String SCHEMA = 'schema';
+  static const String SURVEY = 'survey';
+  static const String SURVEY_ITEM = 'survey-item';
+  static const String SURVEY_QUESTION = 'survey-question';
+  static const String SURVEY_ANSWER = 'survey-answer';
+  static const String TIME_FRAME = 'time-frame';
+  static const String TIME_INTERVAL = 'time-interval';
+  static const String UNITS = 'units';
+  static const String STEP_COUNT = 'step-count';
+  static const String CALORIES = 'calories-burned';
+  static const String MINUTES_MODERATE_ACTIVITY = 'minutes-moderate-activity';
 
   /// The schema this class corresponds to
   SchemaId getSchemaId();

@@ -30,7 +30,7 @@ Acceleration _$AccelerationFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AccelerationToJson(Acceleration instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -56,7 +56,7 @@ AccelerationUnitValue _$AccelerationUnitValueFromJson(
 
 Map<String, dynamic> _$AccelerationUnitValueToJson(
     AccelerationUnitValue instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

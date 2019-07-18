@@ -11,7 +11,7 @@ part 'datapoint.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class DataPoint implements SchemaSupport {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "data-point", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.DATA_POINT, new SchemaVersion(1, 0));
 
   DataPointHeader header;
   Measure body;

@@ -25,7 +25,7 @@ HeartRate _$HeartRateFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$HeartRateToJson(HeartRate instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -61,7 +61,7 @@ RrInterval _$RrIntervalFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$RrIntervalToJson(RrInterval instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -84,7 +84,7 @@ HeartRateUnitValue _$HeartRateUnitValueFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$HeartRateUnitValueToJson(HeartRateUnitValue instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -103,7 +103,7 @@ RrInterUnitValue _$RrInterUnitValueFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$RrInterUnitValueToJson(RrInterUnitValue instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

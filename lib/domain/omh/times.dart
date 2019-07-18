@@ -10,7 +10,7 @@ part 'times.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class TimeFrame extends Object with AdditionalPropertySupport implements SchemaSupport {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "time-frame", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.TIME_FRAME, new SchemaVersion(1, 0));
 
   TimeInterval timeInterval;
   DateTime dateTime;
@@ -34,7 +34,7 @@ class TimeFrame extends Object with AdditionalPropertySupport implements SchemaS
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class TimeInterval extends Object with AdditionalPropertySupport implements SchemaSupport {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "time-interval", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.TIME_INTERVAL, new SchemaVersion(1, 0));
 
   DateTime startDateTime;
   DateTime endDateTime;

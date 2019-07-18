@@ -12,7 +12,7 @@ part 'bloodpressure.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class BloodPressure extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "blood-pressure", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.BLOOD_PRESSURE, new SchemaVersion(1, 0));
 
   SystolicBloodPressure systolicBloodPressure;
   DiastolicBloodPressure diastolicBloodPressure;
@@ -35,8 +35,8 @@ class BloodPressure extends Measure {
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_systolic-blood-pressure">systolic-blood-pressure</a>
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class SystolicBloodPressure extends UnitValue {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "systolic-blood-pressure", new SchemaVersion(1, 0));
+  static SchemaId SCHEMA_ID = new SchemaId.withVersion(
+      SchemaSupport.OMH_NAMESPACE, SchemaSupport.SYSTOLIC_BLOOD_PRESSURE, new SchemaVersion(1, 0));
 
   SystolicBloodPressure(String unit, value) : super(unit, value);
 
@@ -54,8 +54,8 @@ class SystolicBloodPressure extends UnitValue {
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_diastolic-blood-pressure">diastolic-blood-pressure</a>
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class DiastolicBloodPressure extends UnitValue {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "diastolic-blood-pressure", new SchemaVersion(1, 0));
+  static SchemaId SCHEMA_ID = new SchemaId.withVersion(
+      SchemaSupport.OMH_NAMESPACE, SchemaSupport.DIASTOLIC_BLOOD_PRESSURE, new SchemaVersion(1, 0));
 
   DiastolicBloodPressure(String unit, value) : super(unit, value);
 

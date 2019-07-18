@@ -1,3 +1,6 @@
+## 0.1.3
+- upgrade to json_serialization v. 2.0
+
 ## 0.1.2
 - support for surveys added
 

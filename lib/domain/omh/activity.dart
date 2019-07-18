@@ -11,7 +11,7 @@ part 'activity.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class PhysicalActivity extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "physical-activity", new SchemaVersion(1, 2));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.ACTIVITY, new SchemaVersion(1, 2));
 
   String activityName;
   LengthUnitValue distance;
@@ -82,7 +82,7 @@ class KcalUnitValue extends UnitValue {
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class StepCount extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "step-count", new SchemaVersion(2, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.STEP_COUNT, new SchemaVersion(2, 0));
 
   int stepCount;
   String descriptiveStatisticDenominator;
@@ -107,7 +107,7 @@ class StepCount extends Measure {
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class CaloriesBurned extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "calories-burned", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.CALORIES, new SchemaVersion(1, 0));
 
   KcalUnitValue kcalBurned;
   String activityName;
@@ -131,8 +131,8 @@ class CaloriesBurned extends Measure {
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_minutes-moderate-activity">minutes-moderate-activity</a>
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class MinutesModerateActivity extends Measure {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "minutes-moderate-activity", new SchemaVersion(1, 0));
+  static SchemaId SCHEMA_ID = new SchemaId.withVersion(
+      SchemaSupport.OMH_NAMESPACE, SchemaSupport.MINUTES_MODERATE_ACTIVITY, new SchemaVersion(1, 0));
 
   DurationUnitValue minutesModerateActivity;
 

@@ -7,7 +7,7 @@ part 'measure.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class Measure extends Object with AdditionalPropertySupport implements SchemaSupport {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "abstract-measure", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.MEASURE, new SchemaVersion(1, 0));
 
   TimeFrame effectiveTimeFrame;
   String descriptiveStatistic;

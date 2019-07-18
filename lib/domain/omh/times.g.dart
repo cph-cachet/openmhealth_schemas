@@ -18,7 +18,7 @@ TimeFrame _$TimeFrameFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$TimeFrameToJson(TimeFrame instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -49,7 +49,7 @@ TimeInterval _$TimeIntervalFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$TimeIntervalToJson(TimeInterval instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -71,7 +71,7 @@ DurationUnitValue _$DurationUnitValueFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$DurationUnitValueToJson(DurationUnitValue instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

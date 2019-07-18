@@ -16,7 +16,7 @@ DataPoint _$DataPointFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$DataPointToJson(DataPoint instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -46,7 +46,7 @@ DataPointHeader _$DataPointHeaderFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$DataPointHeaderToJson(DataPointHeader instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -74,7 +74,7 @@ DataPointAcquisitionProvenance _$DataPointAcquisitionProvenanceFromJson(
 
 Map<String, dynamic> _$DataPointAcquisitionProvenanceToJson(
     DataPointAcquisitionProvenance instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

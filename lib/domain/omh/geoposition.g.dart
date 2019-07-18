@@ -31,7 +31,7 @@ Geoposition _$GeopositionFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$GeopositionToJson(Geoposition instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -57,7 +57,7 @@ PlaneAngleUnitValue _$PlaneAngleUnitValueFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$PlaneAngleUnitValueToJson(PlaneAngleUnitValue instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

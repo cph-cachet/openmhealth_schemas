@@ -26,7 +26,7 @@ BloodPressure _$BloodPressureFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$BloodPressureToJson(BloodPressure instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -51,7 +51,7 @@ SystolicBloodPressure _$SystolicBloodPressureFromJson(
 
 Map<String, dynamic> _$SystolicBloodPressureToJson(
     SystolicBloodPressure instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -71,7 +71,7 @@ DiastolicBloodPressure _$DiastolicBloodPressureFromJson(
 
 Map<String, dynamic> _$DiastolicBloodPressureToJson(
     DiastolicBloodPressure instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

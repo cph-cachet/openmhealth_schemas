@@ -11,7 +11,7 @@ UnitValue _$UnitValueFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$UnitValueToJson(UnitValue instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -29,7 +29,7 @@ LengthUnitValue _$LengthUnitValueFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$LengthUnitValueToJson(LengthUnitValue instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {

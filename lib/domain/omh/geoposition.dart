@@ -10,7 +10,7 @@ part 'geoposition.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class Geoposition extends Measure {
   static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "geoposition", new SchemaVersion(1, 0));
+      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.GEOPOSITION, new SchemaVersion(1, 0));
 
   PlaneAngleUnitValue latitude;
   PlaneAngleUnitValue longitude;

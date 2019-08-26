@@ -9,12 +9,7 @@ __Disclaimer__: Note that not all OMH schemas are implemented yet. This is work 
 
 To use this plugin, add `openmhealth_schemas` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-Note that this plugin relies on `json_serialization: ^1.0.0` which again rely on Dart 2.1. This mean that (at the time of writing) you should use the `dev` channel in Flutter. 
-This can be set using the following Flutter command:
-
-```
-flutter channel dev
-```
+Note that this plugin relies on `json_serialization: ^3.0.0` which again rely on Dart 2.3. 
 
 ## Example
 

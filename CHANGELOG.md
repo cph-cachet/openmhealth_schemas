@@ -1,3 +1,6 @@
+## 0.1.4+1
+- small update to readme
+
 ## 0.1.4
 - upgrade to json_serialization v. 3.0
 

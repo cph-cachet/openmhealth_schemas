@@ -8,20 +8,21 @@ part of 'geoposition.dart';
 
 Geoposition _$GeopositionFromJson(Map<String, dynamic> json) {
   return Geoposition(
-      json['latitude'] == null
-          ? null
-          : PlaneAngleUnitValue.fromJson(
-              json['latitude'] as Map<String, dynamic>),
-      json['longitude'] == null
-          ? null
-          : PlaneAngleUnitValue.fromJson(
-              json['longitude'] as Map<String, dynamic>),
-      elevation: json['elevation'] == null
-          ? null
-          : LengthUnitValue.fromJson(json['elevation'] as Map<String, dynamic>),
-      numberOfSatellitesInView: json['number_of_satellites_in_view'] as int,
-      numberOfSatellitesInFix: json['number_of_satellites_in_fix'] as int,
-      positioningSystem: json['positioning_system'] as String)
+    json['latitude'] == null
+        ? null
+        : PlaneAngleUnitValue.fromJson(
+            json['latitude'] as Map<String, dynamic>),
+    json['longitude'] == null
+        ? null
+        : PlaneAngleUnitValue.fromJson(
+            json['longitude'] as Map<String, dynamic>),
+    elevation: json['elevation'] == null
+        ? null
+        : LengthUnitValue.fromJson(json['elevation'] as Map<String, dynamic>),
+    numberOfSatellitesInView: json['number_of_satellites_in_view'] as int,
+    numberOfSatellitesInFix: json['number_of_satellites_in_fix'] as int,
+    positioningSystem: json['positioning_system'] as String,
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -53,7 +54,10 @@ Map<String, dynamic> _$GeopositionToJson(Geoposition instance) {
 }
 
 PlaneAngleUnitValue _$PlaneAngleUnitValueFromJson(Map<String, dynamic> json) {
-  return PlaneAngleUnitValue(json['unit'] as String, json['value']);
+  return PlaneAngleUnitValue(
+    json['unit'] as String,
+    json['value'],
+  );
 }
 
 Map<String, dynamic> _$PlaneAngleUnitValueToJson(PlaneAngleUnitValue instance) {

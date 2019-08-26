@@ -46,9 +46,11 @@ Map<String, dynamic> _$SurveyToJson(Survey instance) {
 }
 
 SurveyItem _$SurveyItemFromJson(Map<String, dynamic> json) {
-  return SurveyItem(json['question'] == null
-      ? null
-      : SurveyQuestion.fromJson(json['question'] as Map<String, dynamic>))
+  return SurveyItem(
+    json['question'] == null
+        ? null
+        : SurveyQuestion.fromJson(json['question'] as Map<String, dynamic>),
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -89,7 +91,10 @@ Map<String, dynamic> _$SurveyItemToJson(SurveyItem instance) {
 }
 
 SurveyQuestion _$SurveyQuestionFromJson(Map<String, dynamic> json) {
-  return SurveyQuestion(json['text'] as String, label: json['label'] as String)
+  return SurveyQuestion(
+    json['text'] as String,
+    label: json['label'] as String,
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -142,7 +147,9 @@ Map<String, dynamic> _$AbstractSurveyAnswerToJson(
 }
 
 SurveyAnswer _$SurveyAnswerFromJson(Map<String, dynamic> json) {
-  return SurveyAnswer(json['value'] as String)
+  return SurveyAnswer(
+    json['value'] as String,
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -170,9 +177,10 @@ Map<String, dynamic> _$SurveyAnswerToJson(SurveyAnswer instance) {
 SurveyCategoricalAnswer _$SurveyCategoricalAnswerFromJson(
     Map<String, dynamic> json) {
   return SurveyCategoricalAnswer(
-      value: (json['value'] as Map<String, dynamic>)?.map(
-    (k, e) => MapEntry(k, e as String),
-  ))
+    value: (json['value'] as Map<String, dynamic>)?.map(
+      (k, e) => MapEntry(k, e as String),
+    ),
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -200,7 +208,8 @@ Map<String, dynamic> _$SurveyCategoricalAnswerToJson(
 
 SurveyDateAnswer _$SurveyDateAnswerFromJson(Map<String, dynamic> json) {
   return SurveyDateAnswer(
-      json['value'] == null ? null : DateTime.parse(json['value'] as String))
+    json['value'] == null ? null : DateTime.parse(json['value'] as String),
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -226,7 +235,9 @@ Map<String, dynamic> _$SurveyDateAnswerToJson(SurveyDateAnswer instance) {
 }
 
 SurveyTimeAnswer _$SurveyTimeAnswerFromJson(Map<String, dynamic> json) {
-  return SurveyTimeAnswer(json['value'] as String)
+  return SurveyTimeAnswer(
+    json['value'] as String,
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -253,9 +264,11 @@ Map<String, dynamic> _$SurveyTimeAnswerToJson(SurveyTimeAnswer instance) {
 
 SurveyUnitValueAnswer _$SurveyUnitValueAnswerFromJson(
     Map<String, dynamic> json) {
-  return SurveyUnitValueAnswer(json['value'] == null
-      ? null
-      : UnitValue.fromJson(json['value'] as Map<String, dynamic>))
+  return SurveyUnitValueAnswer(
+    json['value'] == null
+        ? null
+        : UnitValue.fromJson(json['value'] as Map<String, dynamic>),
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -284,13 +297,14 @@ Map<String, dynamic> _$SurveyUnitValueAnswerToJson(
 SurveyDeliveryDetails _$SurveyDeliveryDetailsFromJson(
     Map<String, dynamic> json) {
   return SurveyDeliveryDetails(
-      startDateTime: json['start_date_time'] == null
-          ? null
-          : DateTime.parse(json['start_date_time'] as String),
-      endDateTime: json['end_date_time'] == null
-          ? null
-          : DateTime.parse(json['end_date_time'] as String),
-      endStatus: json['end_status'] as String)
+    startDateTime: json['start_date_time'] == null
+        ? null
+        : DateTime.parse(json['start_date_time'] as String),
+    endDateTime: json['end_date_time'] == null
+        ? null
+        : DateTime.parse(json['end_date_time'] as String),
+    endStatus: json['end_status'] as String,
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -320,7 +334,9 @@ Map<String, dynamic> _$SurveyDeliveryDetailsToJson(
 
 SurveyScore _$SurveyScoreFromJson(Map<String, dynamic> json) {
   return SurveyScore(
-      score: json['score'] as int, value: json['value'] as String)
+    score: json['score'] as int,
+    value: json['value'] as String,
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(

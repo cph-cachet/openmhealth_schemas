@@ -7,8 +7,11 @@ part of 'schemas.dart';
 // **************************************************************************
 
 SchemaId _$SchemaIdFromJson(Map<String, dynamic> json) {
-  return SchemaId(json['namespace'] as String, json['name'] as String,
-      json['version'] as String);
+  return SchemaId(
+    json['namespace'] as String,
+    json['name'] as String,
+    json['version'] as String,
+  );
 }
 
 Map<String, dynamic> _$SchemaIdToJson(SchemaId instance) {
@@ -27,8 +30,11 @@ Map<String, dynamic> _$SchemaIdToJson(SchemaId instance) {
 }
 
 SchemaVersion _$SchemaVersionFromJson(Map<String, dynamic> json) {
-  return SchemaVersion(json['major'] as int, json['minor'] as int,
-      qualifier: json['qualifier'] as String);
+  return SchemaVersion(
+    json['major'] as int,
+    json['minor'] as int,
+    qualifier: json['qualifier'] as String,
+  );
 }
 
 Map<String, dynamic> _$SchemaVersionToJson(SchemaVersion instance) {

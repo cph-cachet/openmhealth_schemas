@@ -8,15 +8,16 @@ part of 'bloodpressure.dart';
 
 BloodPressure _$BloodPressureFromJson(Map<String, dynamic> json) {
   return BloodPressure(
-      json['systolic_blood_pressure'] == null
-          ? null
-          : SystolicBloodPressure.fromJson(
-              json['systolic_blood_pressure'] as Map<String, dynamic>),
-      json['diastolic_blood_pressure'] == null
-          ? null
-          : DiastolicBloodPressure.fromJson(
-              json['diastolic_blood_pressure'] as Map<String, dynamic>),
-      positionDuringMeasurement: json['position_during_measurement'] as String)
+    json['systolic_blood_pressure'] == null
+        ? null
+        : SystolicBloodPressure.fromJson(
+            json['systolic_blood_pressure'] as Map<String, dynamic>),
+    json['diastolic_blood_pressure'] == null
+        ? null
+        : DiastolicBloodPressure.fromJson(
+            json['diastolic_blood_pressure'] as Map<String, dynamic>),
+    positionDuringMeasurement: json['position_during_measurement'] as String,
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -46,7 +47,10 @@ Map<String, dynamic> _$BloodPressureToJson(BloodPressure instance) {
 
 SystolicBloodPressure _$SystolicBloodPressureFromJson(
     Map<String, dynamic> json) {
-  return SystolicBloodPressure(json['unit'] as String, json['value']);
+  return SystolicBloodPressure(
+    json['unit'] as String,
+    json['value'],
+  );
 }
 
 Map<String, dynamic> _$SystolicBloodPressureToJson(
@@ -66,7 +70,10 @@ Map<String, dynamic> _$SystolicBloodPressureToJson(
 
 DiastolicBloodPressure _$DiastolicBloodPressureFromJson(
     Map<String, dynamic> json) {
-  return DiastolicBloodPressure(json['unit'] as String, json['value']);
+  return DiastolicBloodPressure(
+    json['unit'] as String,
+    json['value'],
+  );
 }
 
 Map<String, dynamic> _$DiastolicBloodPressureToJson(

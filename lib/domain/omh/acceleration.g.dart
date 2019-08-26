@@ -8,19 +8,20 @@ part of 'acceleration.dart';
 
 Acceleration _$AccelerationFromJson(Map<String, dynamic> json) {
   return Acceleration(
-      json['acceleration_x'] == null
-          ? null
-          : AccelerationUnitValue.fromJson(
-              json['acceleration_x'] as Map<String, dynamic>),
-      json['acceleration_y'] == null
-          ? null
-          : AccelerationUnitValue.fromJson(
-              json['acceleration_y'] as Map<String, dynamic>),
-      acceleration_z: json['acceleration_z'] == null
-          ? null
-          : AccelerationUnitValue.fromJson(
-              json['acceleration_z'] as Map<String, dynamic>),
-      sensor_body_location: json['sensor_body_location'] as String)
+    json['acceleration_x'] == null
+        ? null
+        : AccelerationUnitValue.fromJson(
+            json['acceleration_x'] as Map<String, dynamic>),
+    json['acceleration_y'] == null
+        ? null
+        : AccelerationUnitValue.fromJson(
+            json['acceleration_y'] as Map<String, dynamic>),
+    acceleration_z: json['acceleration_z'] == null
+        ? null
+        : AccelerationUnitValue.fromJson(
+            json['acceleration_z'] as Map<String, dynamic>),
+    sensor_body_location: json['sensor_body_location'] as String,
+  )
     ..effectiveTimeFrame = json['effective_time_frame'] == null
         ? null
         : TimeFrame.fromJson(
@@ -51,7 +52,9 @@ Map<String, dynamic> _$AccelerationToJson(Acceleration instance) {
 AccelerationUnitValue _$AccelerationUnitValueFromJson(
     Map<String, dynamic> json) {
   return AccelerationUnitValue(
-      json['unit'] as String, (json['value'] as num)?.toDouble());
+    json['unit'] as String,
+    (json['value'] as num)?.toDouble(),
+  );
 }
 
 Map<String, dynamic> _$AccelerationUnitValueToJson(

@@ -1,21 +1,26 @@
-import 'package:openmhealth_schemas/openmhealth_schemas.dart';
-import 'package:json_annotation/json_annotation.dart';
+part of openmhealth_schemas;
 
-part 'measure.g.dart';
-
-/// A base class for OMH measures that provides an extensible builder for common properties.
+/// A base class for OMH measures that provides an extensible builder for
+/// common properties.
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
-class Measure extends Object with AdditionalPropertySupport implements SchemaSupport {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.MEASURE, new SchemaVersion(1, 0));
+class Measure extends Object
+    with AdditionalPropertySupport
+    implements SchemaSupport {
+  static SchemaId SCHEMA_ID = SchemaId.withVersion(
+      SchemaSupport.OMH_NAMESPACE, SchemaSupport.MEASURE, SchemaVersion.V1_0);
 
-  TimeFrame effectiveTimeFrame;
-  String descriptiveStatistic;
-  String userNotes;
+  TimeFrame? effectiveTimeFrame;
+  String? descriptiveStatistic;
+  String? userNotes;
 
-  Measure() : super();
+  Measure({
+    this.effectiveTimeFrame,
+    this.descriptiveStatistic,
+    this.userNotes,
+  }) : super();
 
-  factory Measure.fromJson(Map<String, dynamic> json) => _$MeasureFromJson(json);
+  factory Measure.fromJson(Map<String, dynamic> json) =>
+      _$MeasureFromJson(json);
 
   Map<String, dynamic> toJson() => _$MeasureToJson(this);
 
@@ -26,9 +31,8 @@ class Measure extends Object with AdditionalPropertySupport implements SchemaSup
 }
 
 /// An mixin class for schema classes that support additional properties.
-//@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 abstract class AdditionalPropertySupport {
-  Map<String, Object> _additionalProperties = new Map();
+  final Map<String, Object> _additionalProperties = {};
 
   /// Sets an additional property.
   void setAdditionalProperty(String path, Object value) {
@@ -37,16 +41,8 @@ abstract class AdditionalPropertySupport {
   }
 
   /// Gets an additional property.
-  Object getAdditionalProperty(String name) {
-    return _additionalProperties[name];
-  }
+  Object? getAdditionalProperty(String name) => _additionalProperties[name];
 
   /// Gets the additional properties.
-  Map<String, Object> getAdditionalProperties() {
-    return _additionalProperties;
-  }
-
-  //factory AdditionalPropertySupport.fromJson(Map<String, dynamic> json) => _$AdditionalPropertySupportFromJson(json);
-
-  //Map<String, dynamic> toJson() => _$AdditionalPropertySupportToJson(this);
+  Map<String, Object> getAdditionalProperties() => _additionalProperties;
 }

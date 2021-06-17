@@ -9,8 +9,6 @@ __Disclaimer__: Note that not all OMH schemas are implemented yet. This is work 
 
 To use this plugin, add `openmhealth_schemas` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-Note that this plugin relies on `json_serialization: ^3.0.0` which again rely on Dart 2.3. 
-
 ## Example
 
 The following example shows how to use the OMH Flutter classes  to model OMH measures, convert these to JSON, and read them back from JSON. 
@@ -20,9 +18,13 @@ The following example shows how to use the OMH Flutter classes  to model OMH mea
 First, create an OMH `BloodPressure` measure similar to the [OMH BloodPressure example](http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure).
 
 ```dart
-  BloodPressure bp = new BloodPressure(new SystolicBloodPressure(BloodPressureUnit.MM_OF_MERCURY, 160.0),
-      new DiastolicBloodPressure(BloodPressureUnit.MM_OF_MERCURY, 60.0),
+  BloodPressure bp = BloodPressure(
+      systolicBloodPressure: SystolicBloodPressure(
+          unit: BloodPressureUnit.MM_OF_MERCURY, value: 160.0),
+      diastolicBloodPressure: DiastolicBloodPressure(
+          unit: BloodPressureUnit.MM_OF_MERCURY, value: 80.0),
       positionDuringMeasurement: PositionDuringMeasurement.SITTING);
+
   DateTime start = new DateTime(2016, 2, 5);
   DateTime end = new DateTime(2016, 6, 5);
   TimeInterval time = new TimeInterval(startDateTime: start, endDateTime: end);
@@ -62,12 +64,15 @@ which should produce the following JSON
 Similarly, a OMH `Geoposition` similar to the [OMH Geoposition example](http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_geoposition) can be created
 
 ```dart
-  Geoposition position = new Geoposition(new PlaneAngleUnitValue(PlaneAngleUnit.DEGREE_OF_ARC, 40.059692382),
-      new PlaneAngleUnitValue(PlaneAngleUnit.DEGREE_OF_ARC, -105.21440124511719),
-      elevation: new LengthUnitValue((LengthUnit.METER), 1548.5));
+  Geoposition position = Geoposition(
+      longitude: PlaneAngleUnitValue(
+          unit: PlaneAngleUnit.DEGREE_OF_ARC, value: 40.059692382),
+      latitude: PlaneAngleUnitValue(
+          unit: PlaneAngleUnit.DEGREE_OF_ARC, value: -105.21440124511719),
+      elevation: LengthUnitValue((LengthUnit.METER), 1548.5));
 
-  position.effectiveTimeFrame = new TimeFrame(dateTime: DateTime.now());
   position.positioningSystem = PositioningSystem.GPS;
+  position.effectiveTimeFrame = new TimeFrame(dateTime: DateTime.now());
 ``` 
 
 This should give the following JSON OMH measure.
@@ -106,7 +111,7 @@ If you have a OMH JSON measure (in this case a `PhysicalActivity`) you can insta
 An OMH `DataPoint` for the above `BloodPressure` measure can be created by;
 
 ```dart
-  DataPoint dp = new DataPoint(bp);
+  DataPoint dp = new DataPoint(body: bp);
 ```
 
 which can be converted (using `JsonEncoder.withIndent(' ').convert(dp)`) into the following OMH JSON data point with its header and body.
@@ -163,7 +168,7 @@ Please file feature requests and bug reports at the [issue tracker][tracker].
 
 ## License
 
-This software is copyright (c) 2018 [Copenhagen Center for Health Technology (CACHET)](http://www.cachet.dk/) at the [Technical University of Denmark (DTU)](http://www.dtu.dk).
+This software is copyright (c) 2018-2021 [Copenhagen Center for Health Technology (CACHET)](http://www.cachet.dk/) at the [Technical University of Denmark (DTU)](http://www.dtu.dk).
 This software is made available 'as-is' in a MIT [license](/LICENSE).
 
 

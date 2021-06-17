@@ -1,18 +1,28 @@
-///A Flutter implementation of the [Open mHealth](http://www.openmhealth.org) schemas.
-///The original Java schemas are available on the [Open mHealth GitHub](https://github.com/openmhealth/schemas).
+/// A Flutter implementation of the [Open mHealth](http://www.openmhealth.org)
+/// schemas.
+/// The original Java schemas are available on the
+/// [Open mHealth GitHub](https://github.com/openmhealth/schemas).
 ///
-///Disclaimer: Note that not all OMH schemas are implemented yet. This is work in progress.
+/// Disclaimer: Note that not all OMH schemas are implemented yet. This is work in progress.
 library openmhealth_schemas;
 
-export 'package:openmhealth_schemas/domain/omh/schemas.dart';
-export 'package:openmhealth_schemas/domain/omh/times.dart';
-export 'package:openmhealth_schemas/domain/omh/measure.dart';
-export 'package:openmhealth_schemas/domain/omh/units.dart';
-export 'package:openmhealth_schemas/domain/omh/statistics.dart';
-export 'package:openmhealth_schemas/domain/omh/geoposition.dart';
-export 'package:openmhealth_schemas/domain/omh/activity.dart';
-export 'package:openmhealth_schemas/domain/omh/bloodpressure.dart';
-export 'package:openmhealth_schemas/domain/omh/datapoint.dart';
-export 'package:openmhealth_schemas/domain/omh/acceleration.dart';
-export 'package:openmhealth_schemas/domain/omh/cardio.dart';
-export 'package:openmhealth_schemas/domain/omh/survey.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:uuid/uuid.dart';
+
+part 'domain/omh/acceleration.dart';
+part 'domain/omh/activity.dart';
+part 'domain/omh/bloodpressure.dart';
+part 'domain/omh/cardio.dart';
+part 'domain/omh/datapoint.dart';
+part 'domain/omh/geoposition.dart';
+part 'domain/omh/measure.dart';
+part 'domain/omh/schemas.dart';
+part 'domain/omh/statistics.dart';
+part 'domain/omh/survey.dart';
+part 'domain/omh/times.dart';
+part 'domain/omh/units.dart';
+
+part 'openmhealth_schemas.g.dart';
+
+// auto generate json code (.g files) with:
+//   flutter pub run build_runner build --delete-conflicting-outputs

@@ -1,8 +1,4 @@
-import 'package:openmhealth_schemas/openmhealth_schemas.dart';
-import 'package:json_annotation/json_annotation.dart';
-import 'package:uuid/uuid.dart';
-
-part 'datapoint.g.dart';
+part of openmhealth_schemas;
 
 /// An OMH data point
 ///
@@ -10,31 +6,35 @@ part 'datapoint.g.dart';
 /// See <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_data-point">data-point</a>
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class DataPoint implements SchemaSupport {
-  static SchemaId SCHEMA_ID =
-      new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, SchemaSupport.DATA_POINT, new SchemaVersion(1, 0));
+  static SchemaId SCHEMA_ID = SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE,
+      SchemaSupport.DATA_POINT, SchemaVersion.V1_0);
 
-  DataPointHeader header;
+  late DataPointHeader header;
   Measure body;
 
   /// Creates a [DataPoint] encapsulating OMH schema data specified in [body].
-  DataPoint(Measure body, {String userId, DataPointAcquisitionProvenance provenance}) {
-    String id = new Uuid().v1(); // Generates a time-based version 1 UUID.
-    DateTime now = new DateTime.now();
-
-    DataPointHeader header =
-        new DataPointHeader(id, now, body.getSchemaId(), userId: userId, acquisitionProvenance: provenance);
-
-    this.header = header;
-    this.body = body;
+  DataPoint({
+    required this.body,
+    String? userId,
+    DataPointAcquisitionProvenance? provenance,
+  }) {
+    var id = Uuid().v1(); // Generates a time-based version 1 UUID.
+    var now = DateTime.now();
+    header = DataPointHeader(
+      id: id,
+      creationDateTime: now,
+      schemaId: body.getSchemaId(),
+      userId: userId,
+      acquisitionProvenance: provenance,
+    );
   }
 
-  factory DataPoint.fromJson(Map<String, dynamic> json) => _$DataPointFromJson(json);
+  factory DataPoint.fromJson(Map<String, dynamic> json) =>
+      _$DataPointFromJson(json);
   Map<String, dynamic> toJson() => _$DataPointToJson(this);
 
   @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
+  SchemaId getSchemaId() => SCHEMA_ID;
 }
 
 /// The header of a data point
@@ -43,27 +43,33 @@ class DataPoint implements SchemaSupport {
 /// See  @see <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_header">header</a>
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class DataPointHeader implements SchemaSupport {
-  static SchemaId SCHEMA_ID = new SchemaId.withVersion(SchemaSupport.OMH_NAMESPACE, "header", new SchemaVersion(1, 1));
+  static SchemaId SCHEMA_ID = SchemaId.withVersion(
+      SchemaSupport.OMH_NAMESPACE, 'header', SchemaVersion.V1_0);
 
   String id;
   DateTime creationDateTime;
   SchemaId schemaId;
-  DataPointAcquisitionProvenance acquisitionProvenance;
-  String userId;
+  DataPointAcquisitionProvenance? acquisitionProvenance;
+  String? userId;
 
   /// Creates a [DataPointHeader]. The [id], [creationDateTime], and [bodySchemaId] are required.
   /// Note, however, that normally you would not create a [DataPointHeader], but instead create a [DataPoint],
   /// which takes care of creating its own header.
-  DataPointHeader(this.id, this.creationDateTime, this.schemaId, {this.userId, this.acquisitionProvenance});
+  DataPointHeader({
+    required this.id,
+    required this.creationDateTime,
+    required this.schemaId,
+    this.userId,
+    this.acquisitionProvenance,
+  });
 
-  factory DataPointHeader.fromJson(Map<String, dynamic> json) => _$DataPointHeaderFromJson(json);
+  factory DataPointHeader.fromJson(Map<String, dynamic> json) =>
+      _$DataPointHeaderFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataPointHeaderToJson(this);
 
   @override
-  SchemaId getSchemaId() {
-    return SCHEMA_ID;
-  }
+  SchemaId getSchemaId() => SCHEMA_ID;
 }
 
 /// The acquisition provenance of a data point, representing how and when the data point was acquired.
@@ -73,11 +79,15 @@ class DataPointHeader implements SchemaSupport {
 @JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 class DataPointAcquisitionProvenance {
   String sourceName;
-  DateTime sourceCreationDateTime;
-  String modality;
+  DateTime? sourceCreationDateTime;
+  String? modality;
 
   /// Creates a [DataPointAcquisitionProvenance]. The [sourceName] is required according to the OMH definition.
-  DataPointAcquisitionProvenance(this.sourceName, {this.modality, this.sourceCreationDateTime});
+  DataPointAcquisitionProvenance({
+    required this.sourceName,
+    this.modality,
+    this.sourceCreationDateTime,
+  });
 
   factory DataPointAcquisitionProvenance.fromJson(Map<String, dynamic> json) =>
       _$DataPointAcquisitionProvenanceFromJson(json);
@@ -91,6 +101,6 @@ class DataPointAcquisitionProvenance {
 /// OMH version 1.0
 /// See  @see <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_header">header</a>
 class DataPointModality {
-  static const String SENSED = "sensed";
-  static const String SELF_REPORTED = "self-reported";
+  static const String SENSED = 'sensed';
+  static const String SELF_REPORTED = 'self-reported';
 }

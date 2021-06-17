@@ -1,3 +1,5 @@
+part of openmhealth_schemas;
+
 /// A descriptive statistic of a set of measurements.
 ///
 /// OMH version 1.0

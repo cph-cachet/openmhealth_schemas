@@ -1,3 +1,6 @@
+## 0.2.0
+- updated to null-safety
+
 ## 0.1.4+1
 - small update to readme
 

@@ -1,6 +1,7 @@
-## 0.2.1
+## 0.2.1+1
 - updated to null-safety
 - all constructors using named parameters
+- small updates to docs
 
 ## 0.1.4+1
 - small update to readme

@@ -1,6 +1,6 @@
 # Open mHealth Schemas for Flutter
 
-A Flutter implementation of the [Open mHealth](http://www.openmhealth.org) [schemas](http://www.openmhealth.org/documentation/#/schema-docs/schema-library).
+A Flutter implementation of the [Open mHealth](https://www.openmhealth.org) [schemas](https://www.openmhealth.org/documentation/#/schema-docs/schema-library).
 The original Java schemas are available on the Open mHealth [GitHub](https://github.com/openmhealth/schemas). 
 
 __Disclaimer__: Note that not all OMH schemas are implemented yet. This is work in progress. 
@@ -15,7 +15,7 @@ The following example shows how to use the OMH Flutter classes  to model OMH mea
 
 ### Creating OMH Measures as Dart Objects
 
-First, create an OMH `BloodPressure` measure similar to the [OMH BloodPressure example](http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure).
+First, create an OMH `BloodPressure` measure similar to the [OMH BloodPressure example](https://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_blood-pressure).
 
 ```dart
   BloodPressure bp = BloodPressure(
@@ -61,7 +61,7 @@ which should produce the following JSON
 }
 ```  
 
-Similarly, a OMH `Geoposition` similar to the [OMH Geoposition example](http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_geoposition) can be created
+Similarly, a OMH `Geoposition` similar to the [OMH Geoposition example](https://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_geoposition) can be created
 
 ```dart
   Geoposition position = Geoposition(
@@ -168,7 +168,7 @@ Please file feature requests and bug reports at the [issue tracker][tracker].
 
 ## License
 
-This software is copyright (c) 2018-2021 [Copenhagen Center for Health Technology (CACHET)](http://www.cachet.dk/) at the [Technical University of Denmark (DTU)](http://www.dtu.dk).
+This software is copyright (c) 2018-2021 [Copenhagen Center for Health Technology (CACHET)](https://www.cachet.dk/) at the [Technical University of Denmark (DTU)](https://www.dtu.dk).
 This software is made available 'as-is' in a MIT [license](/LICENSE).
 
 

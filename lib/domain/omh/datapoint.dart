@@ -95,8 +95,8 @@ class DataPointAcquisitionProvenance {
   Map<String, dynamic> toJson() => _$DataPointAcquisitionProvenanceToJson(this);
 }
 
-/// The modality of a data point. The modality represents whether the data point was sensed by a device or
-/// application, or whether it was reported by a person.
+/// The modality of a data point. The modality represents whether the data point 
+/// was sensed by a device or application, or whether it was reported by a person.
 ///
 /// OMH version 1.0
 /// See  @see <a href="http://www.openmhealth.org/documentation/#/schema-docs/schema-library/schemas/omh_header">header</a>

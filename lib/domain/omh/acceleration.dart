@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// This schema represents accelerometer measurements.
 ///
@@ -60,7 +60,7 @@ class AccelerationUnitValue extends UnitValue {
 class AccelerationUnit extends Unit {
   static const String M_S2 = 'm/s^2';
 
-  AccelerationUnit(schemaValue) : super(schemaValue);
+  AccelerationUnit(super.schemaValue);
 }
 
 /// A location on the body. Values from the Anatomical or acquired body structure hierarchy of SNOMED can be added as needed.

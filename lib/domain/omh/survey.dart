@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// This schema represents a survey as an array of at least one survey item (the combination of a question and
 /// the list of its possible answers).

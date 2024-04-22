@@ -1,9 +1,9 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// A marker interface for units of measure.
 //@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
 abstract class Unit extends SchemaEnumValue {
-  Unit(String schemaValue) : super(schemaValue);
+  Unit(super.schemaValue);
 }
 
 /// A base class for unit value tuples.
@@ -42,8 +42,7 @@ class LengthUnitValue extends UnitValue {
   static SchemaId SCHEMA_ID = SchemaId.withVersion(
       SchemaSupport.OMH_NAMESPACE, 'length-unit-value', SchemaVersion.V1_0);
 
-//  LengthUnitValue(LengthUnit unit, value) : super(unit.schemaValue, value);
-  LengthUnitValue(String unit, value) : super(unit, value);
+  LengthUnitValue(super.unit, super.value);
 
   factory LengthUnitValue.fromJson(Map<String, dynamic> json) =>
       _$LengthUnitValueFromJson(json);
@@ -72,5 +71,5 @@ class LengthUnit extends Unit {
   static const String YARD = 'yd';
   static const String MILE = 'mi';
 
-  LengthUnit(String schemaValue) : super(schemaValue);
+  LengthUnit(super.schemaValue);
 }

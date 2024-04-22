@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// This schema represents a single episode of [physical activity](http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=68130003),
 /// including the name of the activity, duration, distance, intensity and calories burned.
@@ -51,7 +51,7 @@ class SelfReportedIntensity {
 class KcalUnit extends Unit {
   static const String KILOCALORIE = 'kcal';
 
-  KcalUnit(schemaValue) : super(schemaValue);
+  KcalUnit(super.schemaValue);
 }
 
 /// OMH version 1.0

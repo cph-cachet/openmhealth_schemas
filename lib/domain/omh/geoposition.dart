@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// A geographic position measurement.
 ///
@@ -50,7 +50,7 @@ class PlaneAngleUnitValue extends UnitValue {
 
   PlaneAngleUnitValue({
     required String unit,
-    required value,
+    required double value,
   }) : super(unit, value);
 
   factory PlaneAngleUnitValue.fromJson(Map<String, dynamic> json) =>
@@ -70,7 +70,7 @@ class PlaneAngleUnitValue extends UnitValue {
 class PlaneAngleUnit extends Unit {
   static const String DEGREE_OF_ARC = 'deg';
 
-  PlaneAngleUnit(schemaValue) : super(schemaValue);
+  PlaneAngleUnit(super.schemaValue);
 }
 
 /// A system used to acquire positions.
@@ -94,5 +94,5 @@ class PositioningSystem {
 class SignalToNoiseRatioUnit extends Unit {
   static const String DECIBEL = 'dB';
 
-  SignalToNoiseRatioUnit(schemaValue) : super(schemaValue);
+  SignalToNoiseRatioUnit(super.schemaValue);
 }

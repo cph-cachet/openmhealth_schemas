@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// This schema represents a person’s blood pressure as a combination of a systolic blood pressure and diastolic blood pressure,
 /// and whether the patient was lying down, sitting, or standing when the blood pressure was obtained.
@@ -41,7 +41,7 @@ class SystolicBloodPressure extends UnitValue {
 
   SystolicBloodPressure({
     required String unit,
-    required value,
+    required double value,
   }) : super(unit, value);
 
   factory SystolicBloodPressure.fromJson(Map<String, dynamic> json) =>
@@ -63,7 +63,7 @@ class DiastolicBloodPressure extends UnitValue {
 
   DiastolicBloodPressure({
     required String unit,
-    required value,
+    required double value,
   }) : super(unit, value);
 
   factory DiastolicBloodPressure.fromJson(Map<String, dynamic> json) =>
@@ -83,7 +83,7 @@ class DiastolicBloodPressure extends UnitValue {
 class BloodPressureUnit extends Unit {
   static const String MM_OF_MERCURY = 'mmHg';
 
-  BloodPressureUnit(schemaValue) : super(schemaValue);
+  BloodPressureUnit(super.schemaValue);
 }
 
 /// The position of a subject during a clinical measurement.

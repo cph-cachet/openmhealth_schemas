@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// A time frame, which is either a point in time or a time interval.
 ///
@@ -96,7 +96,7 @@ class DurationUnit extends Unit {
   static const String MONTH = 'mo';
   static const String YEAR = 'yr';
 
-  DurationUnit(schemaValue) : super(schemaValue);
+  DurationUnit(super.schemaValue);
 }
 
 /// Week days.
@@ -112,7 +112,7 @@ class DayOfWeek extends SchemaEnumValue {
   static const String SATURDAY = 'Saturday';
   static const String SUNDAY = 'Sunday';
 
-  DayOfWeek(schemaValue) : super(schemaValue);
+  DayOfWeek(super.schemaValue);
 }
 
 /// The period of time in which a day is commonly divided.
@@ -125,7 +125,7 @@ class PartOfDay extends SchemaEnumValue {
   static const String EVENING = 'EVENING';
   static const String NIGHT = 'NIGHT';
 
-  PartOfDay(schemaValue) : super(schemaValue);
+  PartOfDay(super.schemaValue);
 }
 
 /// This schema represents the temporal relationship of a clinical measure or assessment to meals (e.g., fasting, after lunch).
@@ -147,7 +147,7 @@ class TemporalRelationshipToMeal extends SchemaEnumValue {
   static const String WITH_MEAL = 'with meal';
   static const String WITH_FOOD = 'with food';
 
-  TemporalRelationshipToMeal(schemaValue) : super(schemaValue);
+  TemporalRelationshipToMeal(super.schemaValue);
 }
 
 /// This schema represents the temporal relationship of a clinical measure or assessment to physical activity (e.g., at rest, during exercise).
@@ -161,7 +161,7 @@ class TemporalRelationshipToPhysicalActivity extends SchemaEnumValue {
   static const String AFTER_EXERCISE = 'after exercise';
   static const String DURING_EXERCISE = 'during exercise';
 
-  TemporalRelationshipToPhysicalActivity(schemaValue) : super(schemaValue);
+  TemporalRelationshipToPhysicalActivity(super.schemaValue);
 }
 
 /// This schema represents the temporal relationship of a clinical measure or assessment to sleep (e.g., before sleeping, on waking).
@@ -173,5 +173,5 @@ class TemporalRelationshipToSleep extends SchemaEnumValue {
   static const String DURING_SLEEPING = 'during sleep';
   static const String ON_WAKING = 'on waking';
 
-  TemporalRelationshipToSleep(schemaValue) : super(schemaValue);
+  TemporalRelationshipToSleep(super.schemaValue);
 }

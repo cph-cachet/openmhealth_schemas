@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// An OMH data point
 ///
@@ -95,7 +95,7 @@ class DataPointAcquisitionProvenance {
   Map<String, dynamic> toJson() => _$DataPointAcquisitionProvenanceToJson(this);
 }
 
-/// The modality of a data point. The modality represents whether the data point 
+/// The modality of a data point. The modality represents whether the data point
 /// was sensed by a device or application, or whether it was reported by a person.
 ///
 /// OMH version 1.0

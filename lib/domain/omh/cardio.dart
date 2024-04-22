@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// This schema represents a person’s heart rate and its relationship to physical activity (resting, or after exercise, etc).
 /// The schema can be used either for a single heart rate measurement, or for basic descriptive statistics (see the [DescriptiveStatistic] schema).
@@ -107,5 +107,5 @@ class RrInterUnitValue extends UnitValue {
 class HeartRateUnit extends Unit {
   static const String BEATS_PER_MINUTE = 'beats/min';
 
-  HeartRateUnit(schemaValue) : super(schemaValue);
+  HeartRateUnit(super.schemaValue);
 }

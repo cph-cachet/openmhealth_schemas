@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// A base class for OMH measures that provides an extensible builder for
 /// common properties.
@@ -31,7 +31,7 @@ class Measure extends Object
 }
 
 /// An mixin class for schema classes that support additional properties.
-abstract class AdditionalPropertySupport {
+mixin AdditionalPropertySupport {
   final Map<String, Object> _additionalProperties = {};
 
   /// Sets an additional property.

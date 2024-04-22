@@ -109,7 +109,7 @@ void main() {
       expect(hr.heartRate.value, 50);
       expect(hr.userNotes, isNotNull);
 
-      print('\nHeartRate:\n' + _encode(hr));
+      print('\nHeartRate:\n${_encode(hr)}');
     });
 
     test('- survey', () {
@@ -146,7 +146,7 @@ void main() {
       expect(survey.items.length, 2);
       expect(survey.deliveryDetails, isNotNull);
 
-      print('\nSurvey:\n' + _encode(survey));
+      print('\nSurvey:\n${_encode(survey)}');
     });
   });
 
@@ -159,7 +159,7 @@ void main() {
               unit: BloodPressureUnit.MM_OF_MERCURY, value: 80.0),
           positionDuringMeasurement: PositionDuringMeasurement.SITTING);
 
-      print('\nBloodPressure:\n' + _encode(bp_1));
+      print('\nBloodPressure:\n${_encode(bp_1)}');
 
       var position = Geoposition(
           longitude: PlaneAngleUnitValue(
@@ -170,7 +170,7 @@ void main() {
 
       position.positioningSystem = PositioningSystem.GPS;
 
-      print('Geoposition:\n' + _encode(position));
+      print('Geoposition:\n${_encode(position)}');
 
       var activity = PhysicalActivity(
           activityName: 'walking',
@@ -179,7 +179,7 @@ void main() {
           reportedActivityIntensity: SelfReportedIntensity.LIGHT,
           distance: LengthUnitValue((LengthUnit.METER), 12.0));
 
-      print('\nPhysicalActivity:\n' + _encode(activity));
+      print('\nPhysicalActivity:\n${_encode(activity)}');
 
       var steps = StepCount(stepCount: 12000);
       steps.descriptiveStatistic = DescriptiveStatistic.AVERAGE;
@@ -190,18 +190,18 @@ void main() {
       var time = TimeInterval(startDateTime: start, endDateTime: end);
       steps.effectiveTimeFrame = TimeFrame(timeInterval: time);
 
-      print('\nStepCount:\n' + _encode(steps));
+      print('\nStepCount:\n${_encode(steps)}');
 
       var cal = CaloriesBurned(
           kcalBurned: KcalUnitValue(unit: KcalUnit.KILOCALORIE, value: 23.2));
 
-      print('CaloriesBurned:\n' + _encode(cal));
+      print('CaloriesBurned:\n${_encode(cal)}');
 
       var mma = MinutesModerateActivity(
           minutesModerateActivity:
               DurationUnitValue((DurationUnit.MINUTE), 12.3));
 
-      print('MinutesModerateActivity\n' + _encode(mma));
+      print('MinutesModerateActivity\n${_encode(mma)}');
     });
 
     test('... data point serialization', () {
@@ -214,7 +214,7 @@ void main() {
 
       var dp_1 = DataPoint(body: bp);
 
-      print('\nDataPoint_BloodPressure:\n' + _encode(dp_1));
+      print('\nDataPoint_BloodPressure:\n${_encode(dp_1)}');
 
       var position = Geoposition(
           longitude: PlaneAngleUnitValue(
@@ -230,13 +230,13 @@ void main() {
               sourceName: 'Android Nexus Phone',
               modality: DataPointModality.SENSED));
 
-      print('\nDataPoint_Geoposition:\n' + _encode(dp_2));
+      print('\nDataPoint_Geoposition:\n${_encode(dp_2)}');
     });
 
     test('... schema de-/serialization', () {
       var uv_1 = UnitValue('mmHg', 120.2);
       final uv_1_json = _encode(uv_1);
-      print('\nUnit Value:\n' + uv_1_json);
+      print('\nUnit Value:\n$uv_1_json');
       final uv_2 =
           UnitValue.fromJson(json.decode(uv_1_json) as Map<String, dynamic>);
       expect(uv_2.value, uv_1.value);
@@ -244,7 +244,7 @@ void main() {
 
       var luv_1 = LengthUnitValue(LengthUnit.METER, 10.2);
       final luv_1_json = _encode(luv_1);
-      print('\nLength Unit Value:\n' + luv_1_json);
+      print('\nLength Unit Value:\n$luv_1_json');
       final luv_2 = LengthUnitValue.fromJson(
           json.decode(luv_1_json) as Map<String, dynamic>);
       expect(_encode(luv_2), equals(luv_1_json));
@@ -257,7 +257,7 @@ void main() {
           elevation: LengthUnitValue((LengthUnit.METER), 1548.5));
       p_1.positioningSystem = PositioningSystem.GPS;
       final p_1_json = _encode(p_1);
-      print('Geoposition:\n' + p_1_json);
+      print('Geoposition:\n$p_1_json');
 
       final p_2 =
           Geoposition.fromJson(json.decode(p_1_json) as Map<String, dynamic>);
@@ -272,7 +272,7 @@ void main() {
           positionDuringMeasurement: PositionDuringMeasurement.SITTING);
 
       final bp_1_json = _encode(bp_1);
-      print('\nBloodPressure:\n' + bp_1_json);
+      print('\nBloodPressure:\n$bp_1_json');
       final bp_2 = BloodPressure.fromJson(
           json.decode(bp_1_json) as Map<String, dynamic>);
       expect(_encode(bp_2), equals(bp_1_json));
@@ -287,7 +287,7 @@ void main() {
       act_1.effectiveTimeFrame = TimeFrame(dateTime: DateTime.now());
 
       final act_1_json = _encode(act_1);
-      print('\nPhysicalActivity:\n' + _encode(act_1));
+      print('\nPhysicalActivity:\n${_encode(act_1)}');
       final act_2 = PhysicalActivity.fromJson(
           json.decode(act_1_json) as Map<String, dynamic>);
       expect(_encode(act_2), equals(act_1_json));
@@ -296,7 +296,7 @@ void main() {
           kcalBurned: KcalUnitValue(unit: KcalUnit.KILOCALORIE, value: 23.2));
 
       final cal_1_json = _encode(cal_1);
-      print('\nCaloriesBurned:\n' + _encode(cal_1));
+      print('\nCaloriesBurned:\n${_encode(cal_1)}');
       final cal_2 = CaloriesBurned.fromJson(
           json.decode(cal_1_json) as Map<String, dynamic>);
       expect(_encode(cal_2), equals(cal_1_json));
@@ -306,7 +306,7 @@ void main() {
               DurationUnitValue((DurationUnit.MINUTE), 12.3));
 
       final mma_1_json = _encode(mma_1);
-      print('\nMinutesModerateActivity\n' + _encode(mma_1));
+      print('\nMinutesModerateActivity\n${_encode(mma_1)}');
       final mma_2 = MinutesModerateActivity.fromJson(
           json.decode(mma_1_json) as Map<String, dynamic>);
       expect(_encode(mma_2), equals(mma_1_json));
@@ -315,12 +315,12 @@ void main() {
     test('... deserialization from raw json', () {
       final act_1 = PhysicalActivity.fromJson(
           json.decode(omh_pa_1) as Map<String, dynamic>);
-      print('\nOMH PhysicalActivity:\n' + _encode(act_1));
+      print('\nOMH PhysicalActivity:\n${_encode(act_1)}');
       expect(act_1.activityName, 'walking');
 
       final act_2 = PhysicalActivity.fromJson(
           json.decode(omh_pa_2) as Map<String, dynamic>);
-      print('\nOMH PhysicalActivity:\n' + _encode(act_2));
+      print('\nOMH PhysicalActivity:\n${_encode(act_2)}');
       expect(act_2.reportedActivityIntensity, 'moderate');
     });
   });

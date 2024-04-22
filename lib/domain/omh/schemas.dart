@@ -1,4 +1,4 @@
-part of openmhealth_schemas;
+part of '../../openmhealth_schemas.dart';
 
 /// An abstract class represent any OMH schema.
 abstract class SchemaSupport {
